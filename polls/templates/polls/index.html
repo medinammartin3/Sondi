@@ -1,17 +1,26 @@
 <!-- TODO : Complete HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% load static %}
 
-{% load static %}
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
-<link rel="stylesheet" href="{% static 'polls/style.css' %}">
-
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li>
-            <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+    {% if latest_question_list %}
+        <ul>
+        {% for question in latest_question_list %}
+            <li>
+                <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+</body>
+</html>
