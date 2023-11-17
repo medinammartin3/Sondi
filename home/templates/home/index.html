@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home - Sondi</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'home/images/favicon.ico' %}">
 </head>
 <body>
-    <h1>Home Page</h1>
+    <img src="{% static 'home/images/logo.svg' %}" alt="">
+    <h1>Sondi</h1>
 </body>
 </html>
