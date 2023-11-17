@@ -5,12 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 </head>
 <body>
-    {% load static %}
-
-    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
-
     {% if latest_question_list %}
         <ul>
         {% for question in latest_question_list %}
