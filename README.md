@@ -1,6 +1,6 @@
 # Sondi
 
-Description :
+**Description** :
 Web-based online survey application that lets you create surveys, vote on existing surveys, view survey results and share your surveys.
 
 It implements:
