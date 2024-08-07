@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Title{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="{% block css %}{% endblock %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="wrapper">
+        <nav>
+            <a href=""><img src="{% static 'images/sondi-logo.svg' %}" alt="Logo" width="120px"></a>
+            <ul>
+                <li><a href="" {% block createSelected %}{% endblock %}>Create</a></li>
+                <li><a href="" {% block voteSelected %}{% endblock %}>Vote</a></li>
+                <li><a href="" {% block mypollsSelected %}{% endblock %}>My polls</a></li>
+                <li><a href="" {% block aboutusSelected %}{% endblock %}>About us</a></li>
+            </ul>
+            <div id="registration">
+                <ul>
+                    <li><a href="">Log in</a></li>
+                    <li><a href="">Sign up</a></li>
+                </ul>  
+            </div>
+        </nav>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        <footer>
+            <p>© Made by <a href="https://medinammartin3.github.io/">Martin Medina</a></p>
+        </footer>
+    </div>
+</body>
+</html>

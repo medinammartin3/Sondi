@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Sondi</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'home/style.css' %}">
-    <link rel="icon" type="image/x-icon" href="{% static 'home/images/favicon.ico' %}">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
-</head>
-<body>
-    <img src="{% static 'home/images/sondi-logo.svg' %}" alt="Logo">
-    <h1>Sondi</h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Home | Sondi{% endblock %}
+
+{% block css %}
+{% load static %}
+{% static 'home/style.css' %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
