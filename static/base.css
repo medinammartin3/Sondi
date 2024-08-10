@@ -133,6 +133,7 @@ main {
     color: #393e46;
     border-radius: 40px;
     border: solid #fda579 3px;
+    background-color: #fffffffc;
 }
 
 .button:hover{
@@ -141,4 +142,5 @@ main {
     text-decoration-thickness: 1.5px;
     text-underline-offset: 3px;
     text-decoration-color: #adadad;
+    cursor: pointer;
 }

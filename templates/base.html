@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="{% block css %}{% endblock %}">
     <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+    <script src="https://kit.fontawesome.com/de7fdc911d.js" crossorigin="anonymous"></script>
+    {% block extraLinks %}{% endblock %}
 </head>
 <body>
     <div id="wrapper">
         <nav>
-            <a href=""><img src="{% static 'images/sondi-logo.svg' %}" alt="Logo" width="120px"></a>
+            <a href="{% url 'home:index' %}"><img src="{% static 'images/sondi-logo.svg' %}" alt="Logo" width="120px"></a>
             <ul>
                 <li><a href="" {% block createSelected %}{% endblock %}>Create</a></li>
                 <li><a href="" {% block voteSelected %}{% endblock %}>Vote</a></li>
@@ -33,5 +35,6 @@
             <p>© Made by <a href="https://medinammartin3.github.io/" target="_blank">Martin Medina</a></p>
         </footer>
     </div>
+    <script type="text/javascript" src="{% block JavaScript %}{% endblock %}"></script>
 </body>
 </html>

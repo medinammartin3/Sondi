@@ -1,7 +1,102 @@
-body {
-    background: white url("images/background.png") no-repeat;
+main{
+    text-align: center;
 }
 
-li a {
-    color: green;
+h1{
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+h2{
+    font-size: 30px;
+    color: #686c74;
+    margin-bottom: 15px;
+}
+
+p{
+    margin: 0;
+}
+
+#id_question_text{
+    margin-bottom: 2px;
+    width: 40vw;
+}
+
+.choice-form{
+    display: flex;
+    place-content: center;
+    margin-bottom: 15px;
+}
+
+input{
+    color: #393e46;
+    border-radius: 40px;
+    border: solid #d7d7d7 2px;
+    width: 25vw;
+    padding: 10px 15px;
+    font-family: "Open sans", sans-serif;
+    font-size: 20px;
+}
+
+input:focus{
+    outline-color: #979797;
+}
+
+input:placeholder-shown{
+    color: #949494;
+    font-family: "Open sans", sans-serif;
+    font-size: 20px;
+}
+
+.button{
+    padding: 10px 15px;
+    font-size: 18px;
+}
+
+.delete-button{
+    border: none;
+}
+
+.choice-form i{
+    color: #393e46;
+    font-size: 25px;
+}
+
+.choice-form i:hover{
+    color: #949494;
+}
+
+.delete-button:disabled i {
+    color: #d3d3d3;
+}
+
+.delete-button:disabled i:hover {
+    color: #d3d3d3;
+    cursor: not-allowed;
+}
+
+#add-button{
+    border: solid #1e9baf 2px;
+    margin: 5px 0;
+    border-radius: 100px;
+    font-size: 20px;
+    color: #686c74;
+    padding: 10px 12px;
+}
+
+#add-button:hover{
+    border: solid #1e9baf 2px;
+    background-color: #c6f7ff;
+}
+
+#validate{
+    margin-top: 40px;
+    font-size: 24px;
+}
+
+#validate:hover{
+    border: solid #fda579 3px;
+    background-color: #ffd1ba;
+    font-size: 24px;
+    text-decoration: none;
 }

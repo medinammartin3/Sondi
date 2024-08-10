@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Create Poll | Sondi{% endblock %}
+
+{% block css %}
+{% load static %}
+{% static 'polls/style.css' %}
+{% endblock %}
+
+{% block extraLinks %}
+{% endblock %}
+
+{% block content %}
+    <h1>Create a new poll</h1>
+    <form id="form-container" method="POST" action="">
+        {% csrf_token %}
+        <h2>Question</h2>
+        {{ question_form.as_p }}
+        <h2>Choices</h2>
+        {{ choice_formset.management_form }}
+        <div id="choice_forms">
+            {% for form in choice_formset %}
+                <div class="choice-form">
+                    {{ form.as_p }}
+                    <button type="button" class="delete-button button"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            {% endfor %}
+        </div>
+        <button type="button" id="add-button" class="button"><i class="fa-solid fa-plus"></i></button>
+        <br>
+        <button action="submit" id="validate" class="button">Create Poll</button>
+    </form>
+{% endblock %}
+
+{% block JavaScript %}
+{% static 'polls/script.js' %}
+{% endblock %}

@@ -8,9 +8,9 @@
 {% endblock %}
 
 {% block content %}
-<img id="home-logo" src="{% static 'images/sondi-logo.svg' %}" alt="Logo" width="350px">
-<h2>Create, vote, and share polls with Sondi, the ultimate free polling platform for quick and easy opinions!</h2>
-<a class="button" href="">Create a poll</a>
-<p>― or ―</p>
-<a class="button" href="">Vote on a poll</a>
+    <img id="home-logo" src="{% static 'images/sondi-logo.svg' %}" alt="Logo" width="350px">
+    <h2>Create, vote, and share polls with Sondi, the ultimate free polling platform for quick and easy opinions!</h2>
+    <a class="button" href="{% url 'polls:create' %}">Create a poll</a>
+    <p>― or ―</p>
+    <a class="button" href="">Vote on a poll</a>
 {% endblock %}
