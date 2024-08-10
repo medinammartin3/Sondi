@@ -81,11 +81,12 @@ class CreatePollView(generic.CreateView):
             for choice in choices:
                 choice.question_id = question_id
                 choice.save()
-            return HttpResponseRedirect(reverse('polls:confirmation'))
+            return HttpResponseRedirect(reverse('polls:confirmation', args=[question.id]))
         else:
             return render(request, "polls/create.html", {"question_form": question_form, "choice_formset": choice_formset})
 
-def confirmation(request):
-    return render(request, "polls/confirmation.html")
+def confirmation(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, "polls/confirmation.html", {"question_code": question.code})
 
 #TODO: prevent double vote and doble question creation on back button hit

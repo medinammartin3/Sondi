@@ -9,7 +9,7 @@ h1{
 
 h2{
     font-size: 32px;
-    color: #686c74;
+    color: #717986;
     margin-bottom: 15px;
 }
 
@@ -103,4 +103,91 @@ input:placeholder-shown{
     background-color: #ffd1ba;
     font-size: 24px;
     text-decoration: none;
+}
+
+
+#confirmation-wrapper{
+    height: 50%;
+    width: 100%;    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#confirmation-wrapper h1{
+    margin-bottom: 3%;
+}
+
+#confirmation-wrapper h2{
+    margin-bottom: 1%;
+}
+
+#codeDiv{
+    display: flex;
+    flex-direction: row;
+    padding: 20px 30px;
+    width: 150px;
+    background-color: #f9f9f9;
+    margin: auto;
+    place-content: center;
+    align-items: center;
+    border-radius: 50px;
+}
+
+#code{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 0 0 22px;
+}
+
+#copy-button{
+    font-size: 30px;
+    border: none;
+    background-color: #f9f9f9;
+    padding: 0;
+}
+
+#copy-button:hover{
+    color: #979797;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    font-size: 20px;
+    width: 80px;
+    background-color: #1e9baf;
+    color: #fff;
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 135%;
+    left: 155%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+content: "";
+position: absolute;
+top: 100%;
+left: 50%;
+margin-left: -5px;
+border-width: 5px;
+border-style: solid;
+border-color: #1e9baf transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+visibility: visible;
+opacity: 0.75;
 }
