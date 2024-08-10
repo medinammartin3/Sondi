@@ -3,17 +3,21 @@ main{
 }
 
 h1{
-    font-size: 40px;
+    font-size: 45px;
     margin-bottom: 25px;
 }
 
 h2{
-    font-size: 30px;
+    font-size: 32px;
     color: #686c74;
     margin-bottom: 15px;
 }
 
-p{
+form{
+    margin: 0;
+}
+
+main p{
     margin: 0;
 }
 

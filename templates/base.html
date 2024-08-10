@@ -16,7 +16,7 @@
         <nav>
             <a href="{% url 'home:index' %}"><img src="{% static 'images/sondi-logo.svg' %}" alt="Logo" width="120px"></a>
             <ul>
-                <li><a href="" {% block createSelected %}{% endblock %}>Create</a></li>
+                <li><a href="{% url 'polls:create' %}" {% block createSelected %}{% endblock %}>Create</a></li>
                 <li><a href="" {% block voteSelected %}{% endblock %}>Vote</a></li>
                 <li><a href="" {% block mypollsSelected %}{% endblock %}>My polls</a></li>
                 <li><a href="" {% block aboutusSelected %}{% endblock %}>About us</a></li>
