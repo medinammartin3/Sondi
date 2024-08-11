@@ -21,9 +21,8 @@ class ChoiceForm(forms.ModelForm):
         labels = {"choice_text": "Choice"}
 
 
-
 ChoiceFormSet = forms.modelformset_factory(
-    Choice, fields=("choice_text",), extra=3, max_num=100, 
+    Choice, fields=("choice_text",), extra=1, min_num=2, max_num=100, 
     labels = {"choice_text": "Choice"},
     error_messages = {
             'choice_text': {
@@ -36,3 +35,12 @@ ChoiceFormSet = forms.modelformset_factory(
         }),
     }
 )
+
+
+class CodeForm(forms.Form):
+    question_code = forms.CharField(label=None, max_length=5, required=True)
+    widgets = {
+            'question_code': forms.TextInput(attrs={
+                'placeholder': 'Enter the question code'
+            }),
+        }

@@ -1,24 +1,45 @@
-<!-- TODO : Complete HTML -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
-</head>
-<body>
-    {% if latest_question_list %}
-        <ul>
-        {% for question in latest_question_list %}
-            <li>
-                <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No polls are available.</p>
-    {% endif %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Polls | Sondi{% endblock %}
+
+{% block css %}
+{% load static %}
+{% static 'polls/style.css' %}
+{% endblock %}
+
+{% block voteSelected %}
+class="selected"
+{% endblock %}
+
+{% block content %}
+<main id="polls-index-main">
+    <h1>Vote on a poll now!</h1>
+    <h2>Private poll</h2>
+    <form method="POST" id="search-form">
+       <span><i class="fa-solid fa-magnifying-glass"></i></span>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <button type="submit" id="search-button" class="button">Search</button>
+    </form>
+    <h2>Public poll</h2>
+    <!-- <h3>Trending polls:</h3> -->
+     <h3>Polls created recently:</h3>
+    <!-- TODO: add more options (trending, etc) -->
+    <div id="public-questions-list">
+        {% if latest_question_list %}
+            <ul id="">
+            {% for question in latest_question_list %}
+                <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}
+
+{% block JavaScript %}
+{% static 'polls/scripts/index.js' %}
+{% endblock %}

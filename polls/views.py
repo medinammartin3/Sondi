@@ -1,17 +1,18 @@
 import random
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.utils import timezone
 
-from .forms import QuestionForm, ChoiceFormSet
+from .forms import CodeForm, QuestionForm, ChoiceFormSet
 
 from .models import Choice, Question
 
-class IndexView(generic.ListView):
+class IndexView(generic.ListView, generic.FormView):
     template_name = "polls/index.html"
     context_object_name = "latest_question_list"
+    form_class = CodeForm
 
     def get_queryset(self):
         """
@@ -19,34 +20,37 @@ class IndexView(generic.ListView):
         published in the future).
         """
         return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[:5]
-
-class DetailView(generic.DetailView):
-    model = Question
-    template_name = "polls/detail.html"
     
-    def get_queryset(self):
-        """
-        Excludes any questions that aren't published yet.
-        """
-        return Question.objects.filter(pub_date__lte=timezone.now())
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.get_form()
+        return context
 
-class ResultsView(generic.DetailView):
-    model = Question
-    template_name = "polls/results.html"
+    def get_success_url(self):
+        code = self.form.cleaned_data['question_code']
+        return reverse_lazy('polls:vote', kwargs={'question_code': code})
 
+    def form_valid(self, form):
+        self.form = form
+        return super().form_valid(form)
+    
+# TODO: create updateView for vote
+# class VoteView(generic.UpdateView):
+#     model = Question
+#     template_name = "polls/vote.html"
+    
 # TODO: Avoid race condition
-def vote(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
+def vote(request, question_code):
+    question = get_object_or_404(Question, code=question_code)
     try:
         selected_choice = question.choice_set.get(pk=request.POST["choice"])
     except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
         return render(
             request,
-            "polls/detail.html",
+            "polls/vote.html",
             {
                 "question": question,
-                "error_message": "You didn't select a choice.",
+                "error_message": "Please select a choice.",
             },
         )
     else:
@@ -56,6 +60,13 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
+    
+
+
+
+class ResultsView(generic.DetailView):
+    model = Question
+    template_name = "polls/results.html"
 
 
 
@@ -73,7 +84,7 @@ class CreatePollView(generic.CreateView):
         if question_form.is_valid() and choice_formset.is_valid():
             question = question_form.save(commit=False)
             question.pub_date = timezone.now()
-            #TODO: prevent repeated code
+            #TODO: prevent repeated question code
             question.code = random.randint(11111,99999)
             question.save()
             question_id = question.id
@@ -85,8 +96,13 @@ class CreatePollView(generic.CreateView):
         else:
             return render(request, "polls/create.html", {"question_form": question_form, "choice_formset": choice_formset})
 
-def confirmation(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, "polls/confirmation.html", {"question_code": question.code})
+
+
+class ConfirmationView(generic.DetailView):
+    model = Question
+    template_name = "polls/confirmation.html"
+    context_object_name = 'question'
+
+
 
 #TODO: prevent double vote and doble question creation on back button hit

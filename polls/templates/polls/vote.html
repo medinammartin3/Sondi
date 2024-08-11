@@ -1,14 +1,19 @@
-<!-- TODO: Complete HTML-->
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{% url 'polls:vote' question.id %}" method="post">
+{% block title %}Vote | Sondi{% endblock %}
+
+{% block css %}
+{% load static %}
+{% static 'polls/style.css' %}
+{% endblock %}
+
+{% block voteSelected %}
+class="selected"
+{% endblock %}
+
+{% block content %}
+<main>
+    <form action="{% url 'polls:vote' question.code %}" method="post">
         {% csrf_token %}
         <fieldset>
             <legend><h1>{{ question.question_text }}</h1></legend>
@@ -19,6 +24,7 @@
             {% endfor %}
         </fieldset>
         <input type="submit" value="Vote">
-        </form>
-</body>
-</html>
+    </form>
+</main>
+{% endblock %}
+

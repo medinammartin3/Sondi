@@ -12,6 +12,8 @@ class="selected"
 {% endblock %}
 
 {% block content %}
+<!-- TODO: implement private/public polls -->
+<main>
     <h1>Create a new poll</h1>
     <form id="form-container" method="POST" action="">
         {% csrf_token %}
@@ -19,6 +21,7 @@ class="selected"
         {{ question_form.as_p }}
         <h2>Choices</h2>
         {{ choice_formset.management_form }}
+        <!-- TODO: Manage error message -->
         <div id="choice_forms">
             {% for form in choice_formset %}
                 <div class="choice-form">
@@ -31,8 +34,9 @@ class="selected"
         <br>
         <button action="submit" id="validate" class="button">Create Poll</button>
     </form>
+</main>
 {% endblock %}
 
 {% block JavaScript %}
-{% static 'polls/script.js' %}
+{% static 'polls/scripts/create.js' %}
 {% endblock %}

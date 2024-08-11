@@ -17,7 +17,7 @@
             <a href="{% url 'home:index' %}"><img src="{% static 'images/sondi-logo.svg' %}" alt="Logo" width="120px"></a>
             <ul>
                 <li><a href="{% url 'polls:create' %}" {% block createSelected %}{% endblock %}>Create</a></li>
-                <li><a href="" {% block voteSelected %}{% endblock %}>Vote</a></li>
+                <li><a href="{% url 'polls:index' %}" {% block voteSelected %}{% endblock %}>Vote</a></li>
                 <li><a href="" {% block mypollsSelected %}{% endblock %}>My polls</a></li>
                 <li><a href="" {% block aboutusSelected %}{% endblock %}>About us</a></li>
             </ul>
@@ -28,9 +28,7 @@
                 </ul>  
             </div>
         </nav>
-        <main>
-            {% block content %}{% endblock %}
-        </main>
+        {% block content %}{% endblock %}
         <footer>
             <p>© Made by <a href="https://medinammartin3.github.io/" target="_blank">Martin Medina</a></p>
         </footer>

@@ -15,6 +15,6 @@
 {% endfor %}
 </ul>
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+<a href="{% url 'polls:vote' question.code %}">Vote again?</a>
 </body>
 </html>

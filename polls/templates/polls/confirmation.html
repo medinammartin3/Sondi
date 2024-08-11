@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Confirmation Poll | Sondi{% endblock %}
+{% block title %}Confirmation | Sondi{% endblock %}
 
 {% block css %}
 {% load static %}
@@ -12,21 +12,21 @@ class="selected"
 {% endblock %}
 
 {% block content %}
-    <div id="confirmation-wrapper">
-        <h1>Your poll has been created successfully!</h1>
-        <h2>Here's the code of your poll:</h2>
-        <div id="codeDiv">
-            <div class="tooltip">
-                <button id="copy-button" class="button" onclick="copyCode()" onmouseout="copyCodeOut()">
-                    <span class="tooltiptext" id="myTooltip">Copy</span>
-                    <i class="fa-regular fa-copy"></i>
-                </button>
-            </div>
-            <p id="code">{{ question_code }}</p>
+<main id="confirmation-main">
+    <h1>Your poll has been created successfully!</h1>
+    <h2>Here's the code of your poll:</h2>
+    <div id="codeDiv">
+        <div class="tooltip">
+            <button id="copy-button" class="button" onclick="copyCode()" onmouseout="copyCodeOut()">
+                <span class="tooltiptext" id="myTooltip">Copy</span>
+                <i class="fa-regular fa-copy"></i>
+            </button>
         </div>
+        <p id="code">{{ question.code }}</p>
     </div>
+</main>
 {% endblock %}
 
 {% block JavaScript %}
-{% static 'polls/script.js' %}
+{% static 'polls/scripts/confirmation.js' %}
 {% endblock %}
