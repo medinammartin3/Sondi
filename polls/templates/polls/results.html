@@ -1,20 +1,24 @@
-<!-- TODO: Complete HTML-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Results | Sondi{% endblock %}
+
+{% block css %}
+{% load static %}
+{% static 'polls/style.css' %}
+{% endblock %}
+
+{% block voteSelected %}
+class="selected"
+{% endblock %}
+
+{% block content %}
+<main>
     <h1>{{ question.question_text }}</h1>
-
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
-
-<a href="{% url 'polls:vote' question.code %}">Vote again?</a>
-</body>
-</html>
+    <ul>
+        {% for choice in question.choice_set.all %}
+            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+        {% endfor %}
+    </ul>
+</main>
+    
+{% endblock %}

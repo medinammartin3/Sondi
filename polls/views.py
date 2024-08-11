@@ -19,7 +19,7 @@ class IndexView(generic.ListView, generic.FormView):
         Return the last five published questions (not including those set to be
         published in the future).
         """
-        return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[:5]
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[:20]
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -34,10 +34,14 @@ class IndexView(generic.ListView, generic.FormView):
         self.form = form
         return super().form_valid(form)
     
-# TODO: create updateView for vote
+
+
+# TODO: implement updateView to vote
 # class VoteView(generic.UpdateView):
-#     model = Question
-#     template_name = "polls/vote.html"
+#     model = Choice
+#     form_class = VoteForm
+#     template_name = 'polls/vote.html'
+
     
 # TODO: Avoid race condition
 def vote(request, question_code):

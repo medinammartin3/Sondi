@@ -38,9 +38,26 @@ ChoiceFormSet = forms.modelformset_factory(
 
 
 class CodeForm(forms.Form):
-    question_code = forms.CharField(label=None, max_length=5, required=True)
-    widgets = {
-            'question_code': forms.TextInput(attrs={
-                'placeholder': 'Enter the question code'
-            }),
-        }
+    question_code = forms.CharField(label=None, max_length=5, required=True, 
+                                    widget=forms.TextInput(attrs={
+                                        'placeholder': 'Enter the question code'
+                                        }),
+                                    )
+    
+
+# class VoteForm(forms.ModelForm):
+#     class Meta:
+#         model = Choice
+#         fields = []
+#         choice = forms.ChoiceField(
+#             choices=[],
+#             widget=forms.RadioSelect
+#         )
+
+#     def __init__(self, *args, **kwargs):
+#         question = kwargs.pop('question', None)
+#         super().__init__(*args, **kwargs)
+
+#         if question:
+#             choices = [(choice.id, choice.choice_text) for choice in question.choice_set.all()]
+#             self.fields['choice'].choices = choices

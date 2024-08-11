@@ -16,9 +16,9 @@ class="selected"
     <h1>Vote on a poll now!</h1>
     <h2>Private poll</h2>
     <form method="POST" id="search-form">
-       <span><i class="fa-solid fa-magnifying-glass"></i></span>
+       <i class="fa-solid fa-magnifying-glass"></i>
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form }}
         <br>
         <button type="submit" id="search-button" class="button">Search</button>
     </form>
@@ -28,7 +28,7 @@ class="selected"
     <!-- TODO: add more options (trending, etc) -->
     <div id="public-questions-list">
         {% if latest_question_list %}
-            <ul id="">
+            <ul>
             {% for question in latest_question_list %}
                 <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
             {% endfor %}
