@@ -12,13 +12,24 @@ class="selected"
 {% endblock %}
 
 {% block content %}
-<main>
-    <h1>{{ question.question_text }}</h1>
-    <ul>
-        {% for choice in question.choice_set.all %}
-            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-        {% endfor %}
-    </ul>
+<main id="results-main">
+    <h1>Your vote has been recorded!</h1>
+    <h2>{{ question.question_text }}</h2>
+    <div class="choice-list">
+        <!-- TODO: make graph (choice between normal or graph display) -->
+        <ul>
+            {% for choice in question.choice_set.all %}
+                <li>
+                    <span id="choice-text">{{ choice.choice_text }}</span>
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                    <span id="number-votes">{{ choice.votes }} vote{{ choice.votes|pluralize }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <h3>Thank you for voting with Sondi <i class="fa-regular fa-face-smile"></i></h3>
+    <a href="{% url 'home:index' %}" class="button">Close</a>
 </main>
     
 {% endblock %}

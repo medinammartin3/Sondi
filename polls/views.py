@@ -38,7 +38,7 @@ class IndexView(generic.ListView, generic.FormView):
 
 # TODO: implement updateView to vote
 # class VoteView(generic.UpdateView):
-#     model = Choice
+#     model = Question
 #     form_class = VoteForm
 #     template_name = 'polls/vote.html'
 

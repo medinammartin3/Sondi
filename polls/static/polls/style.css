@@ -9,8 +9,16 @@ h1{
 
 h2{
     font-size: 32px;
-    color: #606772;
+    font-weight: 450;
+    color: #555a64;
     margin-bottom: 15px;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+}
+
+h3{ 
+    color: #919191;
 }
 
 form{
@@ -59,6 +67,10 @@ input:placeholder-shown{
 
 .delete-button{
     border: none;
+}
+
+.choice-form{
+    margin-left: 55px;
 }
 
 .choice-form i{
@@ -189,12 +201,10 @@ opacity: 0.75;
 
 #polls-index-main h2{
     margin-top: 40px;
-    text-decoration: underline;
 }
 
-h3{
+#polls-index-main h3{
     margin: 0;
-    color: #919191;
 }
 
 #search-form i{
@@ -208,15 +218,14 @@ h3{
 }
 
 #search-button{
+    font-size: 20.5px;
     margin: 10px 0 0 0;
-    color: whitesmoke;
-    background-color: #1e9baf;
-    border: solid #1e9baf 3px;
+    border: solid #1e9baf 2px;
+    padding: 8px;
 }
 
 #search-button:hover{
-    text-decoration-color: whitesmoke;
-    background-color: #1e9baf;
+    background-color: #c6f7ff;
 }
 
 #public-questions-list{
@@ -228,6 +237,10 @@ h3{
     border-radius: 10px;
     font-size: 19px;
     overflow: auto;
+}
+
+#public-questions-list ul{
+    margin: 12px 0;
 }
 
 #public-questions-list li{
@@ -274,4 +287,32 @@ background: #b4b4b4;
 
 #public-questions-list a:hover{
     color: #dc8559;
+}
+
+#results-main h1{
+    margin: 50px 0;
+}
+
+#results-main h2{
+    font-size: 33.5px;
+}
+
+#results-main li{
+    margin-bottom: 12px;
+    font-size: 24px;
+}
+
+#results-main h3{
+    color: #a7a7a7;
+    margin: 40px 0 50px 0;
+}
+
+.choice-list{
+    margin: 0px 30px 5px 0;
+    display: flex;
+    justify-content: center;
+}
+
+#number-votes{
+    color: #646a75;
 }
