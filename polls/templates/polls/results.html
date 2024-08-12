@@ -20,9 +20,9 @@ class="selected"
         <ul>
             {% for choice in question.choice_set.all %}
                 <li>
-                    <span id="choice-text">{{ choice.choice_text }}</span>
+                    <span id="choice-text">{{ choice.choice_text }}&nbsp;</span>
                     <i class="fa-solid fa-arrow-right-long"></i>
-                    <span id="number-votes">{{ choice.votes }} vote{{ choice.votes|pluralize }}</span>
+                    <span id="number-votes">&nbsp;{{ choice.votes }} vote{{ choice.votes|pluralize }}</span>
                 </li>
             {% endfor %}
         </ul>

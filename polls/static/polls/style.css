@@ -201,6 +201,7 @@ opacity: 0.75;
 
 #polls-index-main h2{
     margin-top: 40px;
+    margin-bottom: 25px;
 }
 
 #polls-index-main h3{
@@ -208,13 +209,14 @@ opacity: 0.75;
 }
 
 #search-form i{
+    margin-left: 60px;
     font-size: 25px;
     padding-right: 5px;
 }
 
 #search-form input{
     width: 260px;
-    margin: 8px 35px 3px 0;
+    margin: 15px 5px 20px 0;
 }
 
 #search-button{
@@ -232,7 +234,8 @@ opacity: 0.75;
     margin: 10px auto 0 auto;
     padding-top: 0;
     height: 230px;
-    width: 350px;
+    width: fit-content;
+    min-width: 350px;
     border: 2px solid #ccc;
     border-radius: 10px;
     font-size: 19px;
@@ -289,6 +292,85 @@ background: #b4b4b4;
     color: #dc8559;
 }
 
+#vote-main h1{
+    margin-top: 7%;
+    font-size: 40px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+#vote-main form{
+    width: fit-content;
+    border-radius: 20px;
+    margin: auto;
+    border: solid #b4b4b4 2px;
+    padding: 20px;
+    padding-right: 25px;
+}
+
+.rad-label{
+    display: flex;
+    align-items: center;
+    border-radius: 100px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    cursor: pointer;
+    transition: .3s;
+}
+.rad-label:hover, .rad-label:focus-within {
+    background: hsla(0, 0%, 80%, .14);
+}
+
+.rad-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    z-index: -1;
+}
+
+.rad-design {
+    width: 22px;
+    height: 22px;
+    border-radius: 100px;
+    background: linear-gradient(to right bottom, #00DFFF, #50b0ff);
+    position: relative;
+}
+
+.rad-design::before {
+    content: '';
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    background: hsl(0, 0%, 90%);
+    transform: scale(1.1);
+    transition: .3s;
+}
+
+.rad-input:checked + .rad-design::before {
+    transform: scale(0);
+}
+
+.rad-text {
+    color: #575d66;
+    margin-left: 14px;
+    transition: .3s;
+}
+
+.rad-input:checked ~ .rad-text {
+    color: hsl(0, 0%, 40%);
+}
+
+#vote-button{
+    margin-top: 25px;
+    width: 30%;
+    min-width: fit-content;
+    font-size: 21px;
+}
+
 #results-main h1{
     margin: 50px 0;
 }
@@ -311,6 +393,10 @@ background: #b4b4b4;
     margin: 0px 30px 5px 0;
     display: flex;
     justify-content: center;
+}
+
+.choice-list i{
+    color: #555a64;
 }
 
 #number-votes{

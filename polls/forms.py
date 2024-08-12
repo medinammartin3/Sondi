@@ -48,16 +48,4 @@ class CodeForm(forms.Form):
 # class VoteForm(forms.ModelForm):
 #     class Meta:
 #         model = Choice
-#         fields = []
-#         choice = forms.ChoiceField(
-#             choices=[],
-#             widget=forms.RadioSelect
-#         )
-
-#     def __init__(self, *args, **kwargs):
-#         question = kwargs.pop('question', None)
-#         super().__init__(*args, **kwargs)
-
-#         if question:
-#             choices = [(choice.id, choice.choice_text) for choice in question.choice_set.all()]
-#             self.fields['choice'].choices = choices
+#         fields = ['id']

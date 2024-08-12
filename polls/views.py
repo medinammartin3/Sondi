@@ -27,25 +27,21 @@ class IndexView(generic.ListView, generic.FormView):
         return context
 
     def get_success_url(self):
-        code = self.form.cleaned_data['question_code']
-        return reverse_lazy('polls:vote', kwargs={'question_code': code})
+        code = self.form.cleaned_data['question_code'] 
+        question = Question.objects.get(code=code)
+        return reverse('polls:vote', kwargs={'question_id': question.id})
 
     def form_valid(self, form):
         self.form = form
         return super().form_valid(form)
-    
 
 
-# TODO: implement updateView to vote
-# class VoteView(generic.UpdateView):
-#     model = Question
-#     form_class = VoteForm
-#     template_name = 'polls/vote.html'
 
-    
+# TODO: implement updateView of vote
+   
 # TODO: Avoid race condition
-def vote(request, question_code):
-    question = get_object_or_404(Question, code=question_code)
+def vote(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST["choice"])
     except (KeyError, Choice.DoesNotExist):
