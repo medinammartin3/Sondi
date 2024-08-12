@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Vote | Sondi{% endblock %}
+
+{% block css %}
+{% load static %}
+{% static 'home/style.css' %}
+{% endblock %}
+
+{% block aboutUsSelected %}
+class="selected"
+{% endblock %}
+
+{% block content %}
+<main id="about-main">
+    <h1>About Us</h1>
+    <section>
+        <p>
+            Welcome to Sondi, a free platform for creating and participating 
+            in online polls! Sondi is a project born out of a passion for web 
+            development and a love for creating interactive, user-friendly 
+            applications.
+        </p>
+    </section>
+    <section>
+        <p>From your profile, you can:</p>
+        <ul>
+            <li>
+                <strong>Create</strong>: Design polls with multiple options, 
+                having the choice between make them private or public.
+            </li>
+            <li>
+                <strong>Vote</strong>: Participate in polls shared with you or 
+                created by others and see real-time results.
+            </li>
+            <li>
+                <strong>Share</strong>: Share your polls with friends, colleagues, 
+                or the whole world, just by sharing your poll's code.
+            </li>
+            <li>
+                <!-- TODO: Close polls -->
+                <strong>Manage</strong>: Keep track of all your polls in one 
+                place, view results, and close polls when they're done.
+            </li>
+        </ul>
+    </section>
+    <section>
+        <p>
+            This project is a summer 2024 initiative, aimed at learning and 
+            mastering Django, a powerful web framework for Python. 
+            Through Sondi, I've explored the depths of Django's capabilities, 
+            from database management to user authentication, all while building 
+            a tool that makes it easy for anyone who wants to create and share 
+            polls for free.
+        </p>
+    </section>
+    <section>
+        <p>
+            My goal was to provide a simple yet powerful platform where 
+            users can voice their opinions and make decisions collaboratively. 
+            Sondi is designed to make the process as seamless and enjoyable 
+            as possible.
+        </p>
+    </section>
+    <section>
+        <p>
+            Thank you for joining Sondi! <i class="fa-regular fa-face-smile"></i>
+        </p> 
+    </section>
+</main>
+{% endblock %}

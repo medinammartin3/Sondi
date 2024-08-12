@@ -13,11 +13,41 @@ h2{
     margin: 2% 20% 6% 20%;
 }
 
-main p{
+main > p{
     font-size: 23px;
     margin: 2.5% 0;
 }
 
 .button{
     padding: 12px 25px;
+}
+
+#about-main{
+    margin-bottom: 20px;
+}
+
+#about-main section{
+    margin: 50px 80px;
+    text-align: justify;
+}
+
+strong{
+    color: #198697;
+}
+
+section p{
+    margin: 0;
+}
+
+section ul{
+    margin: 15px;
+}
+
+section ul li{
+    margin-bottom: 10px;
+}
+
+
+section ul li::marker{
+    color: #fda579;
 }

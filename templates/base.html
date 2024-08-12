@@ -19,7 +19,7 @@
                 <li><a href="{% url 'polls:create' %}" {% block createSelected %}{% endblock %}>Create</a></li>
                 <li><a href="{% url 'polls:index' %}" {% block voteSelected %}{% endblock %}>Vote</a></li>
                 <li><a href="" {% block mypollsSelected %}{% endblock %}>My polls</a></li>
-                <li><a href="" {% block aboutusSelected %}{% endblock %}>About us</a></li>
+                <li><a href="{% url 'home:about' %}" {% block aboutUsSelected %}{% endblock %}>About us</a></li>
             </ul>
             <div id="registration">
                 <ul>
