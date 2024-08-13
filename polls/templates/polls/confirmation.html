@@ -15,14 +15,24 @@ class="selected"
 <main id="confirmation-main">
     <h1>Your poll has been created successfully!</h1>
     <h2>Here's the code of your poll:</h2>
-    <div id="code-div">
+    <div class="code-link-div">
         <div class="tooltip">
-            <button id="copy-button" class="button" onclick="copyCode()" onmouseout="copyCodeOut()">
-                <span class="tooltiptext" id="myTooltip">Copy</span>
+            <button class="copy-button" onclick="copyCode()" onmouseout="copyCodeOut()">
+                <span class="tooltiptext" id="myTooltipCode">Copy</span>
                 <i class="fa-regular fa-copy"></i>
             </button>
         </div>
         <p id="code">{{ question.code }}</p>
+    </div>
+    <h3>― Or share with the following link ―</h3>
+    <div class="code-link-div">
+        <div class="tooltip">
+            <button class="copy-button" onclick="copyLink()" onmouseout="copyLinkOut()">
+                <span class="tooltiptext" id="myTooltipLink">Copy</span>
+                <i class="fa-regular fa-copy"></i>
+            </button>
+        </div>
+        <p id="link">http://127.0.0.1:8000/polls/vote/{{ question.code }}/</p>
     </div>
 </main>
 {% endblock %}

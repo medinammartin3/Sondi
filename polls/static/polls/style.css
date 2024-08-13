@@ -123,7 +123,7 @@ input:placeholder-shown{
 }
 
 #confirmation-main h1{
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 3%;
 }
 
@@ -131,7 +131,12 @@ input:placeholder-shown{
     margin-bottom: 2%;
 }
 
-#code-div{
+#confirmation-main h3{
+    margin: 4% 0 2% 0;
+    font-size: 23px;
+}
+
+.code-link-div{
     display: flex;
     flex-direction: row;
     padding: 20px 30px;
@@ -149,14 +154,20 @@ input:placeholder-shown{
     margin: 0 0 0 22px;
 }
 
-#copy-button{
+#link{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0 0 0 22px;
+}
+
+.copy-button{
     font-size: 30px;
     border: none;
     background-color: #f9f9f9;
     padding: 0;
 }
 
-#copy-button:hover{
+.copy-button:hover{
     color: #979797;
 }
 
