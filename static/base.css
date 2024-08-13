@@ -97,7 +97,7 @@ nav > ul a:hover{
 .selected{
     background-color: #e5e5e5 !important;
     color: #1e9baf;
-    text-decoration-color: #1e9baf;
+    text-decoration-color: #1e9baf !important;
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 4px;
