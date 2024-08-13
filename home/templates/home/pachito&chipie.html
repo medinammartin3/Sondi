@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Pachito & Chipie | Sondi{% endblock %}
+
+{% block css %}
+{% load static %}
+{% static 'home/style.css' %}
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1>Pachito & Chipie <i class="fa-regular fa-heart" style="color: #ff0000;"></i></h1>
+    <img src="{% static 'home/images/pachito.jpg' %}" alt="Pachito" style="margin-right: 80px;" width="270px">
+    <img src="{% static 'home/images/chipie.JPG' %}" alt="Chipie" width="270px">
+</main>
+    
+{% endblock %}

@@ -50,16 +50,16 @@ nav > ul li:last-child{
 nav > ul a{
     display: block;
     width: 100%;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 4px;
-    text-decoration-color: #adadad;
+    text-decoration: none;
     color: #393e46;
 }
 
 nav > ul a:hover{
     background-color: #f4f4f4;
-    color: #1e9baf;
-    text-decoration-color: #1e9baf;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+    text-decoration-color: #adadad;
 }
 
 #registration{
@@ -98,6 +98,9 @@ nav > ul a:hover{
     background-color: #e5e5e5 !important;
     color: #1e9baf;
     text-decoration-color: #1e9baf;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
 }
 
 footer{
