@@ -8,7 +8,10 @@ from django.db.models import F
 
 from cuid2 import Cuid
 
-CUID_GENERATOR: Cuid = Cuid(length=10)
+# Code generation with CUID2
+# Max (total) entropy : 7.334885759e+13
+# Before reaching 50% chance of collision : ~ 8,564,394
+CUID_GENERATOR: Cuid = Cuid(length=9)
 
 from .forms import CodeForm, QuestionForm, ChoiceFormSet
 

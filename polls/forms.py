@@ -38,7 +38,7 @@ ChoiceFormSet = forms.modelformset_factory(
 
 
 class CodeForm(forms.Form):
-    question_code = forms.CharField(label=None, max_length=10, required=True, 
+    question_code = forms.CharField(label=None, max_length=9, required=True, 
                                     widget=forms.TextInput(attrs={
                                         'placeholder': 'Enter the question code'
                                         }),

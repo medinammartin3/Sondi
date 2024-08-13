@@ -7,7 +7,7 @@ from django.contrib import admin
 class Question(models.Model):
     question_text = models.CharField(max_length=200, blank=False)
     pub_date = models.DateTimeField("date published")
-    code = models.CharField(max_length=10, blank=False, unique=True)
+    code = models.CharField(max_length=9, blank=False, unique=True)
     def __str__(self):
         return self.question_text
     @admin.display(
