@@ -131,12 +131,12 @@ input:placeholder-shown{
     margin-bottom: 2%;
 }
 
-#codeDiv{
+#code-div{
     display: flex;
     flex-direction: row;
     padding: 20px 30px;
-    width: 150px;
-    background-color: #f9f9f9;
+    width: fit-content;
+    background-color: #f7f7f7;
     margin: auto;
     place-content: center;
     align-items: center;

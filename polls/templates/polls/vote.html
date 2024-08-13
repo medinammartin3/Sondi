@@ -14,7 +14,7 @@ class="selected"
 {% block content %}
 <main id="vote-main">
         <h1>{{ question.question_text }}</h1>
-        <form action="{% url 'polls:vote' question.id %}" method="post">
+        <form action="{% url 'polls:vote' question.code %}" method="post">
             {% csrf_token %}
             <!-- TODO: Error message -->
                 {% for choice in question.choice_set.all %}
