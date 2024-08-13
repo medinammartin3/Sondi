@@ -22,7 +22,7 @@ class="selected"
                 <li>
                     <span id="choice-text">{{ choice.choice_text }}&nbsp;</span>
                     <i class="fa-solid fa-arrow-right-long"></i>
-                    <span id="number-votes">&nbsp;{{ choice.votes }} vote{{ choice.votes|pluralize }}</span>
+                    <span id="number-votes">&nbsp;<strong>{{ choice.votes }}</strong> vote{{ choice.votes|pluralize }}</span>
                 </li>
             {% endfor %}
         </ul>

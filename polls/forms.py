@@ -43,9 +43,3 @@ class CodeForm(forms.Form):
                                         'placeholder': 'Enter the question code'
                                         }),
                                     )
-    
-
-# class VoteForm(forms.ModelForm):
-#     class Meta:
-#         model = Choice
-#         fields = ['id']

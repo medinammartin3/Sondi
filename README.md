@@ -14,6 +14,7 @@ It implements:
 - Simple sqLite Database
 - Testing (*tests*)
 - Default administration Django site
+- Race conditions manage
 - Authentification system (coming)
 
 ## How to Install

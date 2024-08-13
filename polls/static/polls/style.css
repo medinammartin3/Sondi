@@ -227,7 +227,9 @@ opacity: 0.75;
 }
 
 #search-button:hover{
-    background-color: #c6f7ff;
+    background-color: #1e9baf;
+    color: white;
+    text-decoration: none;
 }
 
 #public-questions-list{

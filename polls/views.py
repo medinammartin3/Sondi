@@ -4,6 +4,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.utils import timezone
+from django.db.models import F
+from django.views.decorators.cache import cache_control
+
 
 from .forms import CodeForm, QuestionForm, ChoiceFormSet
 
@@ -34,12 +37,8 @@ class IndexView(generic.ListView, generic.FormView):
     def form_valid(self, form):
         self.form = form
         return super().form_valid(form)
-
-
-
-# TODO: implement updateView of vote
    
-# TODO: Avoid race condition
+
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
@@ -54,14 +53,13 @@ def vote(request, question_id):
             },
         )
     else:
-        selected_choice.votes += 1
+        selected_choice.votes = F('votes') + 1 # Usinf F() expression to avoid race condition
         selected_choice.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
     
-
 
 
 class ResultsView(generic.DetailView):
@@ -104,5 +102,3 @@ class ConfirmationView(generic.DetailView):
     context_object_name = 'question'
 
 
-
-#TODO: prevent double vote and doble question creation on back button hit
