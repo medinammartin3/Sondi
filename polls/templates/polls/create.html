@@ -12,13 +12,21 @@ class="selected"
 {% endblock %}
 
 {% block content %}
-<!-- TODO: implement private/public polls -->
 <main>
     <h1>Create a new poll</h1>
     <form id="form-container" method="POST" action="">
         {% csrf_token %}
+        <!-- TODO: Help message -->
+        <h2>Visibility <i id="help-icon" class="fa-solid fa-circle-question" onclick="helpMessage()"></i></h2>
+        <!-- TODO: do it directly with {{ question_form.visibility }} -->
+        <div id="id_visibility">
+            <input type="radio" name="visibility" value="private" required id="id_visibility_0" checked>
+            <label for="id_visibility_0"><i class="fa-solid fa-lock"></i>Private</label>
+            <input type="radio" name="visibility" value="public" required id="id_visibility_1">
+            <label for="id_visibility_1"><i class="fa-solid fa-earth-americas"></i>Public</label>
+        </div>
         <h2>Question</h2>
-        {{ question_form.as_p }}
+        {{ question_form.question_text }}
         <h2>Choices</h2>
         {{ choice_formset.management_form }}
         <!-- TODO: Manage error message -->
@@ -30,7 +38,7 @@ class="selected"
                 </div>
             {% endfor %}
         </div>
-        <button type="button" id="add-button" class="button"><i class="fa-solid fa-plus"></i></button>
+        <button type="button" id="add-button" class="button" title="Add choice"><i class="fa-solid fa-plus"></i></button>
         <br>
         <button action="submit" id="validate" class="button">Create Poll</button>
     </form>

@@ -4,10 +4,17 @@ from django.db import models
 from django.utils import timezone
 from django.contrib import admin
 
+
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200, blank=False)
     pub_date = models.DateTimeField("date published")
-    code = models.CharField(max_length=9, blank=False, unique=True)
+    code = models.CharField(max_length=6, blank=False, unique=True)
+    VISIBILITY_CHOICES=[
+        ('private', 'Private'),
+        ('public', 'Public')         
+    ]
+    visibility = models.CharField(blank=False, default='private', max_length=7, choices=VISIBILITY_CHOICES)
     def __str__(self):
         return self.question_text
     @admin.display(

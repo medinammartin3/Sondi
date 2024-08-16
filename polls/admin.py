@@ -11,11 +11,11 @@ class ChoiceInline(admin.TabularInline):
 class QuestionAdmin(admin.ModelAdmin):
     readonly_fields = ("id",)
     fieldsets = [
-        ("Question", {"fields": ["id", "code", "question_text"]}),
+        ("Question", {"fields": ["id", "code", "visibility", "question_text"]}),
         ("Date information", {"fields": ["pub_date"]}),
     ]
     inlines = [ChoiceInline]
-    list_display = ["id", "code", "question_text", "pub_date", "was_published_recently"]
+    list_display = ["id", "code", "visibility", "question_text", "pub_date", "was_published_recently"]
     list_filter = ["pub_date"]
     search_fields = ["code", "question_text"]
 

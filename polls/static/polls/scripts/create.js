@@ -69,7 +69,10 @@ function updateDeleteButtons(){
 function removeLabels(){
     let labels = document.querySelectorAll("label");
     labels.forEach(label => {
-        label.remove()
+        if(label.getAttribute('for') && label.getAttribute('for').includes('visibility')){
+            return;
+        }
+        label.remove();
     });
 }
 
@@ -80,3 +83,7 @@ function DisableBackButton(){
    window.onload = DisableBackButton;
    window.onpageshow = function(evt) { if (evt.persisted) DisableBackButton() }
    window.onload = function() {void(0)}
+
+function helpMessage(){
+    alert()
+}

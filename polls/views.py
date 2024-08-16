@@ -9,9 +9,9 @@ from django.db.models import F
 from cuid2 import Cuid
 
 # Code generation with CUID2
-# Max (total) entropy : 7.334885759e+13
-# Before reaching 50% chance of collision : ~ 8,564,394
-CUID_GENERATOR: Cuid = Cuid(length=9)
+# Max (total) entropy : 1,572,120,576
+# Before reaching 50% chance of collision : ~ 39,650
+CUID_GENERATOR: Cuid = Cuid(length=6)
 
 from .forms import CodeForm, QuestionForm, ChoiceFormSet
 
@@ -27,7 +27,9 @@ class IndexView(generic.ListView, generic.FormView):
         Return the last five published questions (not including those set to be
         published in the future).
         """
-        return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[:20]
+        return Question.objects.filter(visibility='public',
+                                       pub_date__lte=timezone.now()
+                                       ).order_by("-pub_date")[:20]
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
