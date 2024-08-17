@@ -23,7 +23,7 @@ ChoiceFormSet = forms.modelformset_factory(
     Choice, fields=("choice_text",), extra=1, min_num=2, max_num=100, 
     error_messages = {
             'choice_text': {
-                'required': 'Please enter a choice.',
+                'required': '* Please enter a choice.',
             },
         },
     widgets = {

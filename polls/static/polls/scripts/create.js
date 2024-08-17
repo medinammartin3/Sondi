@@ -87,7 +87,11 @@ function DisableBackButton(){
 let helpMessage = document.getElementById("help-message")
 
 function openHelpMessage(){
-    helpMessage.classList.remove("hidden")
+    if(helpMessage.classList.contains("hidden")){
+        helpMessage.classList.remove("hidden")
+    }else{
+        helpMessage.classList.add("hidden")
+    }
 }
 
 function closeHelpMessage(){

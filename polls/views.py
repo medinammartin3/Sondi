@@ -67,14 +67,17 @@ def vote(request, question_code):
     try:
         selected_choice = question.choice_set.get(pk=request.POST["choice"])
     except (KeyError, Choice.DoesNotExist):
-        return render(
-            request,
-            "polls/vote.html",
-            {
-                "question": question,
-                "error_message": "Please select a choice.",
-            },
-        )
+        if request.method == "POST":
+            return render(
+                request,
+                "polls/vote.html",
+                {
+                    "question": question,
+                    "error_message": "Please select a choice",
+                },
+            )
+        else:
+            return render(request, "polls/vote.html", {"question": question})
     else:
         selected_choice.votes = F('votes') + 1 # Usinf F() expression to avoid race condition
         selected_choice.save()

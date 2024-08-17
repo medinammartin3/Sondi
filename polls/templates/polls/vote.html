@@ -16,14 +16,16 @@ class="selected"
         <h1>{{ question.question_text }}</h1>
         <form action="{% url 'polls:vote' question.code %}" method="post">
             {% csrf_token %}
-            <!-- TODO: Error message -->
-                {% for choice in question.choice_set.all %}
-                    <label class="rad-label" for="choice{{ forloop.counter }}">
-                        <input class="rad-input" type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-                        <div class="rad-design"></div>
-                        <div class="rad-text">{{ choice.choice_text }}</div>
-                    </label>
-                {% endfor %}
+            {% if error_message %}
+                <p class="error-message">{{ error_message }}</p>
+            {% endif %}
+            {% for choice in question.choice_set.all %}
+                <label class="rad-label" for="choice{{ forloop.counter }}">
+                    <input class="rad-input" type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                    <div class="rad-design"></div>
+                    <div class="rad-text">{{ choice.choice_text }}</div>
+                </label>
+            {% endfor %}
             <button type="submit" class="button" id="vote-button">Vote</button>
         </form>
 </main>
