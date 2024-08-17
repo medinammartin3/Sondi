@@ -16,8 +16,24 @@ class="selected"
     <h1>Create a new poll</h1>
     <form id="form-container" method="POST" action="">
         {% csrf_token %}
-        <!-- TODO: Help message -->
-        <h2>Visibility <i id="help-icon" class="fa-solid fa-circle-question" onclick="helpMessage()"></i></h2>
+        <h2>Visibility <i id="help-icon" class="fa-solid fa-circle-question" onclick="openHelpMessage()"></i></h2>
+        <div class="hidden" id="help-message">
+            <i id="close-help" class="fa-solid fa-x" onclick="closeHelpMessage()"></i>
+            <p>Visibility</p>
+            <ul>
+                <li>
+                    A <strong>public</strong> poll is visible to everyone, allowing 
+                    anyone to vote. It may appear on <i>Public Polls</i> section and 
+                    it's also accessible with the code or link.
+                </li>
+                <li>
+                    A <strong>private</strong> poll, on the other hand, restricts 
+                    access to only your selected audience. Only people with the code 
+                    or link will be able to vote. A private poll will not appear on 
+                    <i>Public Polls</i> section.
+                </li>
+            </ul>
+        </div>
         <!-- TODO: do it directly with {{ question_form.visibility }} -->
         <div id="id_visibility" class="switch-field">
             <input type="radio" name="visibility" value="private" required id="id_visibility_0" checked>

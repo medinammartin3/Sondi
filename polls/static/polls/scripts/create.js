@@ -84,6 +84,12 @@ function DisableBackButton(){
    window.onpageshow = function(evt) { if (evt.persisted) DisableBackButton() }
    window.onload = function() {void(0)}
 
-function helpMessage(){
-    alert()
+let helpMessage = document.getElementById("help-message")
+
+function openHelpMessage(){
+    helpMessage.classList.remove("hidden")
+}
+
+function closeHelpMessage(){
+    helpMessage.classList.add("hidden")
 }

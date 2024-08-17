@@ -65,13 +65,59 @@ input:placeholder-shown{
 }
 
 #help-icon{
-    
-    font-size: 20px;
+    font-size: 19px;
     color: #919191;
 }
 
 #help-icon:hover{
     cursor: pointer;
+}
+
+#help-message{
+    padding: 20px 25px;
+    background-color: #33333388;
+    color: white;
+    width: 60%;
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#help-message ul{
+    padding-left: 15px;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+#help-message li{
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    text-align: justify;
+    list-style-type: circle;
+    &:first-of-type{margin-bottom: 10px;}
+}
+
+#help-message li::marker{
+    color: white;
+}
+
+#help-message p{
+    text-align: center;
+    font-weight: bold;
+    font-size: 19px;
+    text-decoration: underline;
+}
+
+#help-message strong{
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+#close-help{
+    cursor: pointer;
+    float: right;
+    font-size: 17px;
 }
 
 #id_visibility{
