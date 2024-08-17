@@ -330,6 +330,10 @@ opacity: 0.75;
     border-color: #4B9DEA;
 }
 
+#topic-search-bar i{
+    margin-right: 8px;
+}
+
 #public-questions-list{
     margin: 10px auto 0 auto;
     padding-top: 0;
