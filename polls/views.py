@@ -1,11 +1,11 @@
-import random
+import datetime
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.db.models import F
-
+from django.db.models import Sum
 from cuid2 import Cuid
 
 # Code generation with CUID2
@@ -27,13 +27,30 @@ class IndexView(generic.ListView, generic.FormView):
         Return the last five published questions (not including those set to be
         published in the future).
         """
-        return Question.objects.filter(visibility='public',
-                                       pub_date__lte=timezone.now()
-                                       ).order_by("-pub_date")[:20]
+
+        most_recent = Question.objects.filter(visibility='public',
+                                                pub_date__lte=timezone.now()
+                                                ).order_by("-pub_date")[:20]
+        most_voted = Question.objects.filter(visibility='public'
+                                                ).annotate(total_votes=Sum('choice__votes')
+                                                ).order_by('-total_votes')[:20]
+        questions_last24h = Question.objects.filter(visibility='public',
+                                                    pub_date__gte=timezone.now() - datetime.timedelta(days=1))
+        trending = questions_last24h.annotate(total_votes=Sum('choice__votes')
+                                              ).order_by('-total_votes')[:20]
+        random = Question.objects.filter(visibility='public').order_by('?')[:20]
+        return (most_recent, most_voted, trending, random)
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = self.get_form()
+
+        most_recent, most_voted, trending, random = self.get_queryset()
+        context['most_recent'] = most_recent
+        context['most_voted'] = most_voted
+        context['trending'] = trending
+        context['random'] = random
+        
         return context
 
     def get_success_url(self):

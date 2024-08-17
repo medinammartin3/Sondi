@@ -22,19 +22,60 @@ class="selected"
         <button type="submit" id="search-button" class="button">Search</button>
     </form>
     <h2>Public poll</h2>
-    <!-- <h3>Trending polls:</h3> -->
-     <h3>Polls created recently:</h3>
-    <!-- TODO: add more options (trending, etc) -->
+    <div id="topic-search-bar">
+        <ul>
+            <li id="most-recent" onclick="mostRecentSelected()" class="selected">Most Recent</li>
+            <li id="most-voted" onclick="mostVotedSelected()" class="">Most Voted</li>
+            <li id="trending" onclick="trendingSelected()" class="">Trending</li>
+            <li id="random" onclick="randomSelected()" class="">Random</li>
+        </ul>
+    </div>
+    <h3 id="public-questions-topic-title">Polls created recently:</h3>
     <div id="public-questions-list">
-        {% if latest_question_list %}
-            <ul>
-            {% for question in latest_question_list %}
-                <li><a href="/polls/vote/{{ question.code }}/">{{ question.question_text }}</a></li>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <p>No polls are available.</p>
-        {% endif %}
+        <div id="most-recent-questions" class="">
+            {% if most_recent %}
+                <ul>
+                {% for question in most_recent %}
+                    <li><a href="/polls/vote/{{ question.code }}/">{{ question.question_text }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+        </div>
+        <div id="most-voted-questions" class="hidden">
+            {% if most_voted %}
+                <ul>
+                {% for question in most_voted %}
+                    <li><a href="/polls/vote/{{ question.code }}/">{{ question.question_text }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+        </div>
+        <div id="trending-questions" class="hidden">
+            {% if trending %}
+                <ul>
+                {% for question in trending %}
+                    <li><a href="/polls/vote/{{ question.code }}/">{{ question.question_text }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+        </div>
+        <div id="random-questions" class="hidden">
+            {% if random %}
+                <ul>
+                {% for question in random %}
+                    <li><a href="/polls/vote/{{ question.code }}/">{{ question.question_text }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+        </div>
     </div>
 </main>
 {% endblock %}
