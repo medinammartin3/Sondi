@@ -1,4 +1,5 @@
 import datetime
+import json
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
@@ -31,14 +32,18 @@ class IndexView(generic.ListView, generic.FormView):
         most_recent = Question.objects.filter(visibility='public',
                                                 pub_date__lte=timezone.now()
                                                 ).order_by("-pub_date")[:20]
+        
         most_voted = Question.objects.filter(visibility='public'
                                                 ).annotate(total_votes=Sum('choice__votes')
                                                 ).order_by('-total_votes')[:20]
+        
         questions_last24h = Question.objects.filter(visibility='public',
                                                     pub_date__gte=timezone.now() - datetime.timedelta(days=1))
         trending = questions_last24h.annotate(total_votes=Sum('choice__votes')
                                               ).order_by('-total_votes')[:20]
+        
         random = Question.objects.filter(visibility='public').order_by('?')[:20]
+        
         return (most_recent, most_voted, trending, random)
     
     def get_context_data(self, **kwargs):
@@ -91,6 +96,20 @@ def vote(request, question_code):
 class ResultsView(generic.DetailView):
     model = Question
     template_name = "polls/results.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        question = self.get_object()
+
+        total_votes = question.choice_set.aggregate(total_votes=Sum('votes'))['total_votes']
+        context['total_votes'] = total_votes
+
+        datapoints = []
+        for choice in question.choice_set.all():
+            datapoints.append({"label": choice.choice_text, "y": choice.votes*100/total_votes})
+        context['datapoints'] = json.dumps(datapoints)
+
+        return context
 
 
 

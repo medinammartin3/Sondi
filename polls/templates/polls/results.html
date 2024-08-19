@@ -11,25 +11,43 @@
 class="selected"
 {% endblock %}
 
+{% block extraLinks %}
+<script src="https://cdn.canvasjs.com/ga/canvasjs.min.js"></script>
+<script type="text/javascript">
+    let datapoints = JSON.parse('{{ datapoints|safe }}');
+</script>
+{% endblock %}
+
 {% block content %}
 <main id="results-main">
     <h1>Your vote has been recorded!</h1>
-    <h2>{{ question.question_text }}</h2>
-    <div class="choice-list">
-        <!-- TODO: make graph (choice between normal or graph display) -->
+    <div class="list-switch" id="view-type-bar">
         <ul>
-            {% for choice in question.choice_set.all %}
-                <li>
-                    <span id="choice-text">{{ choice.choice_text }}&nbsp;</span>
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                    <span id="number-votes">&nbsp;<strong>{{ choice.votes }}</strong> vote{{ choice.votes|pluralize }}</span>
-                </li>
-            {% endfor %}
+            <li id="classic" onclick="classicSelected()" class="selected"><i class="fa-solid fa-list"></i> Classic</li>
+            <li id="graph" onclick="graphSelected()" class=""><i class="fa-solid fa-chart-pie"></i>Graph</li>
         </ul>
     </div>
-    
+    <div id="classic-display">
+        <h2 id="question-text">{{ question.question_text }}</h2>
+        <div class="choice-list">
+            <ul>
+                {% for choice in question.choice_set.all %}
+                    <li>
+                        <span>{{ choice.choice_text }}&nbsp;</span>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                        <span class="number-votes">&nbsp;<strong>{{ choice.votes }}</strong> vote{{ choice.votes|pluralize }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>Total votes: {{ total_votes }}</p>
+        </div>
+    </div>
+    <div class="hidden" id="graphContainer"></div>
     <h3>Thank you for voting with Sondi <i class="fa-regular fa-face-smile"></i></h3>
     <a href="{% url 'home:index' %}" class="button">Close</a>
 </main>
-    
+{% endblock %}
+
+{% block JavaScript %}
+{% static 'polls/scripts/results.js' %}
 {% endblock %}
