@@ -1,11 +1,7 @@
-main{
-    text-align: center;
-}
+ /* ------ POLLS APP TEMPLATES CSS ------ */
 
-h1{
-    font-size: 45px;
-    margin-bottom: 25px;
-}
+
+/* --- GENERAL --- */
 
 h2{
     font-size: 32px;
@@ -23,19 +19,6 @@ h3{
 
 form{
     margin: 0;
-}
-
-main p{
-    margin: 0;
-}
-
-.button{
-    padding: 7px 20px;
-}
-
-#id_question_text{
-    margin-bottom: 2px;
-    width: 40vw;
 }
 
 input{
@@ -58,9 +41,166 @@ input:placeholder-shown{
     font-size: 20px;
 }
 
+.button{
+    padding: 7px 20px;
+}
+
+
+
+
+/* --- INDEX.HTML --- */
+
+#polls-index-main h2{
+    margin-bottom: 10px;
+}
+
+#polls-index-main h3{
+    margin: 0;
+}
+
+/* Search form */
+
+#search-form i{
+    margin-left: 65px;
+    font-size: 25px;
+    padding-right: 5px;
+}
+
+#search-form input{
+    width: 260px;
+    margin: 10px 5px 10px 0;
+}
+
+#search-button{
+    font-size: 21px;
+    margin: 10px 0 0 0;
+    border: solid #1e9baf 2.5px;
+    padding: 8px 12px;
+}
+
+#search-button:hover{
+    background-color: #1e9baf;
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Public polls categories */
+
+.list-switch ul{
+    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.list-switch li{
+    cursor: pointer;
+    list-style-type: none;
+    padding: 6px 17px; 
+    border: solid 1px #d5d5d5; 
+    font-size: 19px; 
+    font-weight: bold; 
+    text-align: center;
+    transition: border-color .15s ease-out, 
+                color .25s ease-out, 
+                background-color .15s ease-out,
+                box-shadow .15s ease-out;
+    &:first-of-type {border-radius: 8px 0 0 8px; border-right: none;}
+    &:last-of-type {border-radius: 0 8px 8px 0; border-left: none;}
+}
+
+.list-switch li:hover{
+    border-color: #b5b5b5;
+    background-color: #f2f2f2;
+}
+
+.list-switch li.selected{
+    text-decoration: none;
+    background-color: #1e9baf !important;
+    color: #FFF;
+    box-shadow: 1px 1px 10px #929292;
+    border-color: #1e9baf;
+}
+
+.list-switch i{
+    margin-right: 8px;
+}
+
+
+/* Public polls list */
+
+#public-questions-list{
+    margin: 10px auto 0 auto;
+    padding-top: 0;
+    height: 250px;
+    width: fit-content;
+    min-width: 350px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 19px;
+    overflow: auto;
+}
+
+#public-questions-list ul{
+    margin: 12px 0;
+}
+
+#public-questions-list p{
+    line-height: 250px;
+    color: #7e7e7e;
+    font-style: italic;
+}
+
+#public-questions-list a{
+    color: #393e46;
+}
+
+#public-questions-list a:hover{
+    color: #dc8559;
+}
+
+
+/* Scrollbar styles */
+
+::-webkit-scrollbar {
+width: 10px;
+height: 10px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid #cacaca;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: #cacaca;  
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #b4b4b4;  
+}
+
+
+
+
+/* --- CREATE.HTML --- */
+
+
+/* Question form */
+
+#id_question_text{
+    margin-bottom: 2px;
+    width: 40vw;
+}
+
 #form-container h2{
     &:first-of-type{margin-left: 25px;}
 }
+
+
+/* Help icon and message */
 
 #help-icon{
     margin-left: 7px;
@@ -120,6 +260,9 @@ input:placeholder-shown{
     font-size: 17px;
 }
 
+
+/* Visibility form */
+
 #id_visibility{
 	display: flex; 
     flex-flow: row;
@@ -160,9 +303,8 @@ input:placeholder-shown{
     border-color: #1e9baf;
 }
 
-.delete-button{
-    border: none;
-}
+
+/* Choices form */
 
 .choice-form{
     display: flex;
@@ -200,6 +342,10 @@ input:placeholder-shown{
     color: #949494;
 }
 
+.delete-button{
+    border: none;
+}
+
 .delete-button:disabled i {
     color: #d3d3d3;
 }
@@ -223,7 +369,10 @@ input:placeholder-shown{
     background-color: #c6f7ff;
 }
 
-#validate{
+
+/* Submit button */
+
+#create-button{
     width: 15%;
     min-width: 160px;
     padding: 10px 15px;
@@ -231,13 +380,17 @@ input:placeholder-shown{
     font-size: 26px;
 }
 
-#validate:hover{
+#create-button:hover{
     border: solid #fda579 3px;
-    background-color: #ffd1ba;
+    background-color: #fda579;
     font-size: 26px;
     text-decoration: none;
 }
 
+
+
+
+/* --- CONFIRMATION.HTML --- */
 
 #confirmation-main{
     width: 100%;    
@@ -256,6 +409,9 @@ input:placeholder-shown{
     margin: 3% 0;
     font-size: 24px;
 }
+
+
+/* Code and link style */
 
 .code-link-div{
     display: flex;
@@ -280,6 +436,9 @@ input:placeholder-shown{
     font-weight: bold;
     margin: 0 0 0 22px;
 }
+
+
+/* Copy button and message */
 
 .copy-button{
     font-size: 30px;
@@ -331,145 +490,10 @@ visibility: visible;
 opacity: 0.75;
 }
 
-#polls-index-main h2{
-    margin-bottom: 10px;
-}
 
-#polls-index-main h3{
-    margin: 0;
-}
 
-#search-form i{
-    margin-left: 65px;
-    font-size: 25px;
-    padding-right: 5px;
-}
 
-#search-form input{
-    width: 260px;
-    margin: 10px 5px 10px 0;
-}
-
-#search-button{
-    font-size: 21px;
-    margin: 10px 0 0 0;
-    border: solid #1e9baf 2.5px;
-    padding: 8px 12px;
-}
-
-#search-button:hover{
-    background-color: #1e9baf;
-    color: white;
-    text-decoration: none;
-}
-
-.list-switch ul{
-    padding-left: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.list-switch li{
-    cursor: pointer;
-    list-style-type: none;
-    padding: 6px 17px; 
-    border: solid 1px #d5d5d5; 
-    font-size: 19px; 
-    font-weight: bold; 
-    text-align: center;
-    transition: border-color .15s ease-out, 
-                color .25s ease-out, 
-                background-color .15s ease-out,
-                box-shadow .15s ease-out;
-    &:first-of-type {border-radius: 8px 0 0 8px; border-right: none;}
-    &:last-of-type {border-radius: 0 8px 8px 0; border-left: none;}
-}
-
-.list-switch li:hover{
-    border-color: #b5b5b5;
-    background-color: #f2f2f2;
-}
-
-.list-switch li.selected{
-    text-decoration: none;
-    background-color: #1e9baf !important;
-    color: #FFF;
-    box-shadow: 1px 1px 10px #929292;
-    border-color: #1e9baf;
-}
-
-.list-switch i{
-    margin-right: 8px;
-}
-
-#public-questions-list{
-    margin: 10px auto 0 auto;
-    padding-top: 0;
-    height: 250px;
-    width: fit-content;
-    min-width: 350px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    font-size: 19px;
-    overflow: auto;
-}
-
-#public-questions-list ul{
-    margin: 12px 0;
-}
-
-#public-questions-list li{
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-#public-questions-list p{
-    line-height: 250px;
-    color: #7e7e7e;
-    font-style: italic;
-}
-
-.hidden{
-    display: none !important;
-}
-
-ul li{
-    text-align: left;
-    color: #393e46;
-}
-
-ul li::marker{
-    color: #fda579;
-}
-
-/* Scrollbar styles */
-::-webkit-scrollbar {
-width: 10px;
-height: 10px;
-}
-
-::-webkit-scrollbar-track {
-border: 1px solid #cacaca;
-border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-background: #cacaca;  
-border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-background: #b4b4b4;  
-}
-
-#public-questions-list a{
-    color: #393e46;
-}
-
-#public-questions-list a:hover{
-    color: #dc8559;
-}
+/* --- VOTE.HTML --- */
 
 #vote-main h1{
     margin-top: 7%;
@@ -487,12 +511,18 @@ background: #b4b4b4;
     padding-right: 25px;
 }
 
+
+/* Error message */
+
 .error-message{
     color: #ff7474;
     font-size: 20px;
     text-align: center;
     font-style: italic;
 }
+
+
+/* Select choice form (radio buttons style) */
 
 .rad-label{
     display: flex;
@@ -550,6 +580,9 @@ background: #b4b4b4;
     color: hsl(0, 0%, 40%);
 }
 
+
+/* Submit button */
+
 #vote-button{
     margin-top: 25px;
     width: 30%;
@@ -557,14 +590,10 @@ background: #b4b4b4;
     font-size: 21px;
 }
 
-#view-type-bar ul{
-    margin: 30px;
-}
 
-#view-type-bar ul li{
-    margin-bottom: 0;
-    font-size: 20px;
-}
+
+
+/* --- RESULTS.HTML --- */
 
 #results-main h2{
     font-size: 32px;
@@ -582,6 +611,21 @@ background: #b4b4b4;
     font-size: 23px;
     margin: 30px;
 }
+
+
+/* Type of view form */
+
+#view-type-bar ul{
+    margin: 30px;
+}
+
+#view-type-bar ul li{
+    margin-bottom: 0;
+    font-size: 20px;
+}
+
+
+/* List view */
 
 .choice-list ul{
     display: inline-block;
@@ -605,6 +649,9 @@ background: #b4b4b4;
     text-underline-offset: 3px;
     margin-bottom: 50px;
 }
+
+
+/* Graph view */
 
 #graphContainer{
     width: 35%;

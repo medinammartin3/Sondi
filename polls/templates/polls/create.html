@@ -1,3 +1,5 @@
+<!-- CREATE A NEW POLL -->
+
 {% extends "base.html" %}
 
 {% block title %}Create Poll | Sondi{% endblock %}
@@ -16,7 +18,9 @@ class="selected"
     <h1>Create a new poll</h1>
     <form id="form-container" method="POST" action="">
         {% csrf_token %}
+        <!-- Visibility form -->
         <h2>Visibility<i id="help-icon" class="fa-solid fa-circle-question" onclick="openHelpMessage()"></i></h2>
+        <!-- Help message -->
         <div class="hidden" id="help-message">
             <i id="close-help" class="fa-solid fa-x" onclick="closeHelpMessage()"></i>
             <p>Visibility</p>
@@ -34,18 +38,19 @@ class="selected"
                 </li>
             </ul>
         </div>
-        <!-- TODO: do it directly with {{ question_form.visibility }} -->
+        <!-- Visibility switch -->
         <div id="id_visibility" class="switch-field">
             <input type="radio" name="visibility" value="private" required id="id_visibility_0" checked>
             <label for="id_visibility_0"><i class="fa-solid fa-lock"></i>Private</label>
             <input type="radio" name="visibility" value="public" required id="id_visibility_1">
             <label for="id_visibility_1"><i class="fa-solid fa-earth-americas"></i>Public</label>
         </div>
+        <!-- Question form -->
         <h2>Question</h2>
         {{ question_form.question_text }}
+        <!-- Choices form -->
         <h2>Choices</h2>
         {{ choice_formset.management_form }}
-        <!-- TODO: Manage error message -->
         <div id="choice_forms">
             {% for form in choice_formset %}
                 <div class="choice-form">
@@ -56,7 +61,8 @@ class="selected"
         </div>
         <button type="button" id="add-button" class="button" title="Add choice"><i class="fa-solid fa-plus"></i></button>
         <br>
-        <button action="submit" id="validate" class="button">Create Poll</button>
+        <!-- Submit button -->
+        <button action="submit" id="create-button" class="button">Create Poll</button>
     </form>
 </main>
 {% endblock %}

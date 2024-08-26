@@ -1,13 +1,19 @@
+"""
+Admin site configuration for displaying and managing polls.
+"""
+
 from django.contrib import admin
 
 from .models import Choice, Question
 
 
+# Inline form for choices
 class ChoiceInline(admin.TabularInline):
     model = Choice
     extra = 0
 
 
+# Admin interface for questions
 class QuestionAdmin(admin.ModelAdmin):
     readonly_fields = ("id",)
     fieldsets = [

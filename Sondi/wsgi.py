@@ -1,5 +1,5 @@
 """
-WSGI config for Sondi project.
+WSGI config for Sondi.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

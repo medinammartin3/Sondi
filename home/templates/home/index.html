@@ -1,3 +1,5 @@
+<!-- HOME PAGE OF SONDI -->
+
 {% extends "base.html" %}
 
 {% block title %}Home | Sondi{% endblock %}
@@ -11,9 +13,10 @@
 <main>
     <img id="home-logo" src="{% static 'images/sondi-logo.svg' %}" alt="Logo" width="350px">
     <h2>Create, vote, and share polls with Sondi, the ultimate free polling platform for quick and easy opinions!</h2>
+
+    <!-- Buttons -->
     <a class="button" href="{% url 'polls:create' %}">Create a poll</a>
     <p>― or ―</p>
     <a class="button" href="{% url 'polls:index' %}">Vote on a poll</a>
 </main>
-    
 {% endblock %}

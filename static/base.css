@@ -1,3 +1,6 @@
+/* ------ BASE TEMPLATE CSS ------ */
+
+
 html, body{
     height: 100%;
 }
@@ -13,6 +16,16 @@ body {
     flex-direction: column;
 }
 
+#wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+
+/* --- NAV BAR --- */
+
 nav {
     background-color: #fffffffc;
     width: 100%;
@@ -26,6 +39,9 @@ nav {
     left: 0;
     z-index: 1000;
 }
+
+
+/* Navigation links */
 
 nav ul {
     width: 70%;
@@ -63,6 +79,18 @@ nav > ul a:hover{
     text-decoration-color: #adadad;
 }
 
+.selected{
+    background-color: #e5e5e5 !important;
+    color: #1e9baf;
+    text-decoration-color: #1e9baf !important;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+}
+
+
+/* Authentification buttons */
+
 #registration{
     width: 15%;
 }
@@ -95,42 +123,45 @@ nav > ul a:hover{
     background-color: #1e9baf;
 }
 
-.selected{
-    background-color: #e5e5e5 !important;
-    color: #1e9baf;
-    text-decoration-color: #1e9baf !important;
-    text-decoration: underline;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 4px;
-}
 
-footer{
-    background-color: #e9e9e9;
+
+/* --- MAIN PAGE CONTENT --- */
+
+main{
     text-align: center;
-    width: 100%;
-    height: 75px;
-}
-
-footer p{
-    font-size: 20px;
-    padding-top: 5px;
-}
-
-footer a{
-    color: #1e9baf;
-    text-decoration-color: #1e9baf;
-}
-
-#wrapper{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-main {
     flex: 1;
     margin: 65px 0;
 }
+
+
+/* Text */
+
+main h1{
+    font-size: 45px;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+main p{
+    margin: 0;
+}
+
+
+/* Lits */
+
+main ul li{
+    text-align: left;
+    color: #393e46;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+main ul li::marker{
+    color: #fda579;
+}
+
+
+/* Buttons */
 
 .button{
     text-decoration: none;
@@ -147,4 +178,32 @@ main {
     text-underline-offset: 3px;
     text-decoration-color: #adadad;
     cursor: pointer;
+}
+
+
+/* Hidden elements */
+
+.hidden{
+    display: none !important;
+}
+
+
+
+/* --- FOOTER --- */
+
+footer{
+    background-color: #e9e9e9;
+    text-align: center;
+    width: 100%;
+    height: 75px;
+}
+
+footer p{
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+footer a{
+    color: #1e9baf;
+    text-decoration-color: #1e9baf;
 }

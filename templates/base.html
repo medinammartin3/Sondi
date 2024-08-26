@@ -1,26 +1,36 @@
+<!-- BASE TEMPLATE -->
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Title{% endblock %}</title>
     {% load static %}
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'base.css' %}">
     <link rel="stylesheet" href="{% block css %}{% endblock %}">
+    <!-- Tab icon -->
     <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <!-- Font - Open Sans -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+    <!-- Icon library -->
     <script src="https://kit.fontawesome.com/de7fdc911d.js" crossorigin="anonymous"></script>
     {% block extraLinks %}{% endblock %}
 </head>
 <body>
     <div id="wrapper">
+        <!-- Navigation bar -->
         <nav>
+            <!-- Logo -->
             <a href="{% url 'home:index' %}"><img src="{% static 'images/sondi-logo.svg' %}" alt="Logo" width="120px"></a>
+            <!-- Navigation Links -->
             <ul>
                 <li><a href="{% url 'polls:create' %}" {% block createSelected %}{% endblock %}>Create</a></li>
                 <li><a href="{% url 'polls:index' %}" {% block voteSelected %}{% endblock %}>Vote</a></li>
                 <li><a href="" {% block mypollsSelected %}{% endblock %}>My polls</a></li>
                 <li><a href="{% url 'home:about' %}" {% block aboutUsSelected %}{% endblock %}>About us</a></li>
             </ul>
+            <!-- Authentification buttons -->
             <div id="registration">
                 <ul>
                     <li><a href="">Log in</a></li>
@@ -28,8 +38,14 @@
                 </ul>  
             </div>
         </nav>
-        {% block content %}{% endblock %}
+
+        {% block content %}
+        <!-- Main page content -->
+        {% endblock %}
+
+        <!-- Footer -->
         <footer>
+            <!-- Author and Copyright -->
             <p>© Made by <a href="https://medinammartin3.github.io/" target="_blank">Martin Medina</a></p>
         </footer>
     </div>

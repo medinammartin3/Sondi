@@ -1,5 +1,5 @@
 """
-ASGI config for Sondi project.
+ASGI config for Sondi.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

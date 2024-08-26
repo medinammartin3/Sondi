@@ -1,3 +1,5 @@
+<!-- POLL RESULTS -->
+
 {% extends "base.html" %}
 
 {% block title %}Results | Sondi{% endblock %}
@@ -14,6 +16,7 @@ class="selected"
 {% block extraLinks %}
 <script src="https://cdn.canvasjs.com/ga/canvasjs.min.js"></script>
 <script type="text/javascript">
+    // Pass graph information to JavaScript
     let datapoints = JSON.parse('{{ datapoints|safe }}');
 </script>
 {% endblock %}
@@ -21,12 +24,14 @@ class="selected"
 {% block content %}
 <main id="results-main">
     <h1>Your vote has been recorded!</h1>
+    <!-- Type of view form -->
     <div class="list-switch" id="view-type-bar">
         <ul>
             <li id="classic" onclick="classicSelected()" class="selected"><i class="fa-solid fa-list"></i> Classic</li>
             <li id="graph" onclick="graphSelected()" class=""><i class="fa-solid fa-chart-pie"></i>Graph</li>
         </ul>
     </div>
+    <!-- List display -->
     <div id="classic-display">
         <h2 id="question-text">{{ question.question_text }}</h2>
         <div class="choice-list">
@@ -42,8 +47,10 @@ class="selected"
             <p>Total votes: {{ total_votes }}</p>
         </div>
     </div>
+    <!-- Graph display -->
     <div class="hidden" id="graphContainer"></div>
     <h3>Thank you for voting with Sondi <i class="fa-regular fa-face-smile"></i></h3>
+    <!-- Close button -->
     <a href="{% url 'home:index' %}" class="button">Close</a>
 </main>
 {% endblock %}

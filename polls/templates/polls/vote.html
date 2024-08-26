@@ -1,3 +1,5 @@
+<!-- VOTE ON A POLL -->
+
 {% extends "base.html" %}
 
 {% block title %}Vote | Sondi{% endblock %}
@@ -16,6 +18,7 @@ class="selected"
         <h1>{{ question.question_text }}</h1>
         <form action="{% url 'polls:vote' question.code %}" method="post">
             {% csrf_token %}
+            <!-- Select choice form -->
             {% if error_message %}
                 <p class="error-message">{{ error_message }}</p>
             {% endif %}
@@ -26,6 +29,7 @@ class="selected"
                     <div class="rad-text">{{ choice.choice_text }}</div>
                 </label>
             {% endfor %}
+            <!-- Submit button -->
             <button type="submit" class="button" id="vote-button">Vote</button>
         </form>
 </main>

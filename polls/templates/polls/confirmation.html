@@ -1,3 +1,5 @@
+<!-- Poll created confirmation -->
+
 {% extends "base.html" %}
 
 {% block title %}Confirmation | Sondi{% endblock %}
@@ -15,6 +17,7 @@ class="selected"
 <main id="confirmation-main">
     <h1>Your poll has been created successfully!</h1>
     <h2>Here's the code of your poll:</h2>
+    <!-- Code -->
     <div class="code-link-div">
         <div class="tooltip">
             <button class="copy-button" onclick="copyCode()" onmouseout="copyCodeOut()">
@@ -25,6 +28,7 @@ class="selected"
         <p id="code">{{ question.code }}</p>
     </div>
     <h3>― Or share with the following link ―</h3>
+    <!-- Link -->
     <div class="code-link-div">
         <div class="tooltip">
             <button class="copy-button" onclick="copyLink()" onmouseout="copyLinkOut()">

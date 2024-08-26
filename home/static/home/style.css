@@ -1,6 +1,7 @@
-main{
-    text-align: center;
-}
+ /* ------ HOME APP TEMPLATES CSS ------ */
+
+
+/* --- INDEX.HTML --- */
 
 #home-logo{
     margin: 40px auto 0 auto;
@@ -22,6 +23,11 @@ main > p{
     padding: 12px 25px;
 }
 
+
+
+
+/* --- ABOUT.HTML --- */
+
 #about-main{
     margin-bottom: 20px;
 }
@@ -31,23 +37,10 @@ main > p{
     text-align: justify;
 }
 
-strong{
-    color: #198697;
-}
-
-section p{
-    margin: 0;
-}
-
 section ul{
     margin: 15px;
 }
 
-section ul li{
-    margin-bottom: 10px;
-}
-
-
-section ul li::marker{
-    color: #fda579;
+section strong{
+    color: #198697;
 }
