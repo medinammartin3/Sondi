@@ -31,7 +31,7 @@ class ChoiceForm(forms.ModelForm):
 # Formset for display and manage multiple choice forms.
 # Requires a minimum of 2 choices to create a new poll.
 ChoiceFormSet = forms.modelformset_factory(
-    Choice, fields=("choice_text",), extra=0, min_num=2, max_num=100, 
+    Choice, fields=("choice_text",), extra=0, min_num=2, max_num=100,
     error_messages = {
             'choice_text': {
                 'required': '* Please enter a choice.',

@@ -1,6 +1,3 @@
-// TODO: Fix bug when the first choice form is deleted,
-// error messages are displayed even if theres two choices added
-
 window.onload = function(){
     removeLabels();
     updateDeleteButtons();
@@ -15,17 +12,13 @@ window.onpageshow = function(evt) { if (evt.persisted) DisableBackButton() }
 let choiceForm = document.querySelectorAll(".choice-form");
 let container = document.querySelector("#form-container");
 let addButton = document.querySelector("#add-button");
-let deleteButtons = document.querySelectorAll(".delete-button");
-let totalForms = document.querySelector;("#id_form-TOTAL_FORMS");
+let totalForms = document.querySelector("#id_form-TOTAL_FORMS");
 
 let formNum = choiceForm.length - 1; // Current number of choice forms displayed
 
-// Add event listeners to the add and delete buttons 
-// to detect when a choice form is added or deleted
+// Add event listener to the add button
 addButton.addEventListener('click', addForm);
-deleteButtons.forEach(deleteButton =>{
-    deleteButton.addEventListener('click', deleteForm);
-});
+
 
 // Add a new choice form
 function addForm(event) {
@@ -40,10 +33,7 @@ function addForm(event) {
 
     totalForms.value = `${formNum + 1}`; // Update the total number of forms in the management form
 
-    // Add event listener to the delete button of the new form
-    deleteButtons = document.querySelectorAll(".delete-button");
-    deleteButtons[deleteButtons.length - 1].addEventListener('click', deleteForm)
-
+    console.log(totalForms.value)
     updateDeleteButtons();
     removeLabels();
 }
@@ -59,21 +49,37 @@ function deleteForm(event){
     formNum--; // Decrement the current number of forms
     totalForms.value = `${formNum + 1}`; // Update the total number of forms in the management form
 
-    // Update the id of all remaining choice forms to maintain correct sequence
+    // Update the id and name attributes of all remaining choice forms to maintain correct sequence
+    let formRegex = RegExp(`form-(\\d){1}-`,'g'); // Regex to find all instances of the form number
     let forms = document.querySelectorAll(".choice-form");
     forms.forEach((form, index) => {
-        let input = form.querySelector('input');
-        input.id= `id_form-${index}-choice_text`
+        // Get all input elements of each choice form
+        let inputs = form.querySelectorAll('input')
+        // Update manually the id and name attributes of each input to keep the introduced text
+        inputs.forEach(input => {
+            let name = input.getAttribute('name').replace(formRegex, `form-${index}-`);
+            let id = input.getAttribute('id').replace(formRegex, `form-${index}-`);
+            input.setAttribute('name', name);
+            input.setAttribute('id', id);
+        });
     });
 
+    console.log(totalForms.value)
     updateDeleteButtons();
     removeLabels();
 }
 
 
+// Add event listener to all delete buttons
 // Update the delete buttons to enable/disable them based on the number of choice forms
 function updateDeleteButtons(){
     let deleteButtons = document.querySelectorAll(".delete-button");
+
+    // Add event listener to each button
+    deleteButtons.forEach(deleteButton =>{
+        deleteButton.addEventListener('click', deleteForm);
+    });
+
     // If only two choice forms remain, disable their delete buttons
     if (formNum <= 1) {
         deleteButtons.forEach(button => {
