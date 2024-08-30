@@ -100,12 +100,11 @@ nav > ul a:hover{
     display: flex;
     flex-direction: row;
     list-style-type: none;
-    justify-content: center;
+    justify-content: space-around;
     padding-left: 0;
 }
 
 #registration li {
-    width: 48%;
     text-align: center;
 }
 
@@ -114,13 +113,88 @@ nav > ul a:hover{
     background-color: #fda579;
     font-size: 20px;
     text-decoration: none;
-    padding: 6px 10px;
+    padding: 7px 13px;
     border-radius: 40px;
 }
 
 #registration a:hover{
     color: whitesmoke;
     background-color: #1e9baf;
+}
+
+.buttonSelected{
+    color: whitesmoke !important;
+    background-color: #1e9baf !important;
+}
+
+
+/* User information and menu */
+
+#user-section{
+    height: 65px;
+    line-height: 65px;
+    text-align: center;
+}
+
+#user-section:hover{
+    background-color: #c5c5c527;
+    
+    #username{
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+}
+
+#user-info{
+    padding: 0 15px;
+}
+
+#user-info:hover{
+    cursor: pointer;
+    background-color: #c5c5c527;
+
+    #username{
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+}
+
+#user-icon{
+    padding-right: 3px;
+    color: #393e46;
+}
+
+#user-menu-arrow{
+    font-size: 22px;
+    padding-left: 5px;
+    color: #393e46;
+}
+
+#user-menu{
+    position: relative;
+    left: 0;
+    border: solid #9e9e9eb8 2px;
+    border-top: none;
+    padding: 0 20px;
+    border-radius:  0 0 10px 10px;
+    /* TODO: Add transition */
+}
+
+#user-menu a{
+    font-size: 20.5px;
+    padding-bottom: 20px;
+    border-bottom: solid #adadada5 2px;
+}
+
+#user-menu button{
+    width: 100%;
+    margin-top: 25px;
+    font-size: 21px;
+    padding: 8px !important;
+}
+
+#user-menu button:active{
+    background-color: #c6f7ff;
 }
 
 
@@ -138,7 +212,7 @@ main{
 
 main h1{
     font-size: 45px;
-    margin-top: 30px;
+    margin-top: 25px;
     margin-bottom: 25px;
 }
 
@@ -160,6 +234,18 @@ main ul li::marker{
     color: #fda579;
 }
 
+.link, .link:visited{
+    color: #1e9baf;
+}
+
+.link:hover{
+    color: #56ccde;
+}
+
+.link:active{
+    color: #1b8c9d;
+}
+
 
 /* Buttons */
 
@@ -169,6 +255,7 @@ main ul li::marker{
     border-radius: 40px;
     border: solid #fda579 3px;
     background-color: #fffffffc;
+    padding: 7px 20px
 }
 
 .button:hover{

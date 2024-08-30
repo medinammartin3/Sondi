@@ -5,6 +5,8 @@ from django.views import generic
 from django.utils import timezone
 from django.db.models import F
 from django.db.models import Sum
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import CodeForm, QuestionForm, ChoiceFormSet
 from .models import Choice, Question
@@ -86,6 +88,7 @@ class IndexView(generic.ListView, generic.FormView):
 """
 View for handling poll voting.
 """
+@login_required
 def vote(request, question_code):
     question = get_object_or_404(Question, code=question_code)
     try:
@@ -142,7 +145,7 @@ class ResultsView(generic.DetailView):
 """
 View for creating a new poll.
 """
-class CreatePollView(generic.CreateView):
+class CreatePollView(LoginRequiredMixin, generic.CreateView):
     template_name = "polls/create.html"
 
     def get(self, request, *args, **kargs):

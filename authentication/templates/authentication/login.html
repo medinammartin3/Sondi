@@ -1,0 +1,33 @@
+<!-- LOG IN -->
+
+{% extends "base.html" %}
+
+{% block title %}Log In | Sondi{% endblock %}
+
+{% block css %}
+{% load static %}
+{% static 'authentication/style.css' %}
+{% endblock %}
+
+{% block loginSelected %}
+class="buttonSelected"
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1>Welcome back!</h1>
+    <div class="registration-section">
+        <!-- Help message with anonymously -->
+        <h2>Log In</h2>
+        <form method="POST" class="registration-form">
+            {% csrf_token %}
+            {{ form }}
+            <!-- TODO: Customize reset password page -->
+            <!-- TODO: Fix reset password done page link bug -->
+            <a href="{% url 'password_reset' %}" id="forgot-password" class="link">Forgot password?</a>
+            <button type="submit" class="button registration-button">Log In</button>
+        </form>
+        <p>Don't have an account? <a href="{% url 'signup' %}" class="link">Sign up</a></p>
+    </div>
+</main>
+{% endblock %}  

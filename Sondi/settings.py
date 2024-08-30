@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'polls.apps.PollsConfig',
+    "authentication.apps.AuthenticationConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,4 +133,19 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-LOGIN_REDIRECT_URL = "/"
+
+# Authentification settings
+
+LOGIN_URL = '/auth/login/'
+
+AUTH_USER_MODEL = 'authentication.CustomUser'
+
+AUTHENTICATION_BACKENDS = ['authentication.backends.EmailBackend']
+
+LOGIN_REDIRECT_URL = "home:index"
+
+LOGOUT_REDIRECT_URL = "home:index"
+
+# Test the password reset flow locally, output emails to the console instead
+# TODO: remove
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

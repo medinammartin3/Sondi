@@ -19,6 +19,7 @@ class Question(models.Model):
     ]
     visibility = models.CharField(blank=False, default='private', max_length=7, 
                                   choices=VISIBILITY_CHOICES)
+    
     def __str__(self):
         return self.question_text
     

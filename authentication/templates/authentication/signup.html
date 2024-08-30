@@ -1,0 +1,28 @@
+<!-- SIGN UP -->
+
+{% extends "base.html" %}
+
+{% block title %}Sign Up | Sondi{% endblock %}
+
+{% block css %}
+{% load static %}
+{% static 'authentication/style.css' %}
+{% endblock %}
+
+{% block signupSelected %}
+class="buttonSelected"
+{% endblock %}
+
+{% block content %}
+<main id="signup-main">
+    <h1>Join the Sondi Community Now!</h1>
+    <div class="registration-section">
+        <h2>Sign Up</h2>
+        <form method="POST" class="registration-form">
+            {% csrf_token %}
+            {{ form }}
+        <button type="submit" class="button registration-button">Sign Up</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

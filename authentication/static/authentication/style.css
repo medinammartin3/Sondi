@@ -1,0 +1,132 @@
+/* ------ AUTHENTICATION APP TEMPLATES CSS ------ */
+
+
+/* --- GENERAL --- */
+
+h2{
+    margin: 0;
+    font-size: 38px;
+    font-weight: 450;
+    color: #4b4f56;
+    margin-bottom: 40px;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+}
+
+h3{ 
+    color: #919191;
+}
+
+form{
+    margin: 0;
+}
+
+input{
+    color: #393e46;
+    border-radius: 40px;
+    border: solid #d7d7d7 2px;
+    width: 100%;
+    padding: 8px 15px;
+    font-family: "Open sans", sans-serif;
+    font-size: 20px;
+    margin-bottom: 25px;
+    &:last-of-type {margin-bottom: 5px;}
+}
+
+input:focus{
+    outline-color: #7a7a7a;
+}
+
+input:placeholder-shown{
+    color: #949494;
+    font-family: "Open sans", sans-serif;
+    font-size: 20px;
+}
+
+
+/* Registration forms */
+
+.registration-section{
+    margin: auto;
+    width: 30%;
+    border: solid #939393 2px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.registration-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+.registration-form label{
+    align-self: flex-start;
+    margin-bottom: 3px;
+    margin-left: 15px;
+}
+
+.registration-button{
+    font-size: 23px;
+    min-width: 110px;
+    width: 80%;
+    padding: 8px;
+    margin: 30px;
+}
+
+.registration-button:hover{
+    background-color: #fda579;
+    color: white;
+    text-decoration: none;
+    border: solid #fda579 3px;
+}
+
+.registration-button:active{
+    background-color: #e0956f;
+    color: white;
+    text-decoration: none;
+    border: solid #e0956f 3px;
+}
+
+
+
+
+/* --- LOGIN.HTML --- */
+
+#forgot-password{
+    justify-content: left;
+    font-size: 18px;
+    align-self: flex-start;
+    margin-left: 15px;
+}
+
+.registration-section a, .registration-section p{
+    font-size: 20px;
+    text-underline-offset: 3px;
+}
+
+ 
+
+
+/* --- SIGNUP.HTML --- */
+
+#signup-main h2{
+    margin-bottom: 30px;
+}
+
+#signup-main input{
+    margin-bottom: 18px;
+    padding: 7px 15px;
+}
+
+#signup-main button{
+    margin-top: 15px;
+    margin-bottom: 0;
+}

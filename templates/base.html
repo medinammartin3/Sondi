@@ -30,13 +30,32 @@
                 <li><a href="" {% block mypollsSelected %}{% endblock %}>My polls</a></li>
                 <li><a href="{% url 'home:about' %}" {% block aboutUsSelected %}{% endblock %}>About us</a></li>
             </ul>
+            {% if user.is_authenticated %}
+            <!-- User information and menu -->
+            <div id="user-section">
+                <div id="user-info" onclick="userMenuDisplay()">
+                    <i class="fa-regular fa-user" id="user-icon"></i>
+                    <span id="username">{{ user.username }}</span>
+                    <i class="fa-solid fa-chevron-down" id="user-menu-arrow"></i>
+                </div>
+                <div id="user-menu" class="hidden">
+                    <!-- TODO: customize change password page -->
+                    <a href="{% url 'password_change' %}" class="link">Password Change</a>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="button">Log Out</button>
+                    </form>
+                </div>
+            </div>
+            {% else %}
             <!-- Authentification buttons -->
             <div id="registration">
                 <ul>
-                    <li><a href="">Log in</a></li>
-                    <li><a href="">Sign up</a></li>
+                    <li><a href="{% url 'login' %}" {% block loginSelected %}{% endblock %}>Log in</a></li>
+                    <li><a href="{% url 'signup' %}" {% block signupSelected %}{% endblock %}>Sign up</a></li>
                 </ul>  
             </div>
+            {% endif %}
         </nav>
 
         {% block content %}
@@ -49,6 +68,7 @@
             <p>© Made by <a href="https://medinammartin3.github.io/" target="_blank">Martin Medina</a></p>
         </footer>
     </div>
+    <script type="text/javascript" src="{% static 'base.js' %}"></script>
     <script type="text/javascript" src="{% block JavaScript %}{% endblock %}"></script>
 </body>
 </html>

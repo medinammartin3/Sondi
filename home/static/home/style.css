@@ -1,17 +1,17 @@
- /* ------ HOME APP TEMPLATES CSS ------ */
+/* ------ HOME APP TEMPLATES CSS ------ */
 
 
 /* --- INDEX.HTML --- */
 
 #home-logo{
-    margin: 40px auto 0 auto;
+    margin: 5% auto 0 auto;
 }
 
 h2{
     font-size: 27px;
     font-weight: 500;
     font-style: normal;
-    margin: 2% 20% 6% 20%;
+    margin: 2% 20% 5% 20%;
 }
 
 main > p{
@@ -20,7 +20,7 @@ main > p{
 }
 
 .button{
-    padding: 12px 25px;
+    padding: 12px 25px !important;
 }
 
 
@@ -43,4 +43,16 @@ section ul{
 
 section strong{
     color: #198697;
+}
+
+.note{
+    color: #ff7070;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: bold;
+}
+
+.note-li{
+    margin-top: 20px;
+    list-style-type: none;
 }

@@ -124,10 +124,10 @@ let helpMessage = document.getElementById("help-message");
 
 // Toggle the display of the help message when the help button is clicked
 function openHelpMessage(){
-    // Display the help message if it's currently hidden
+    // Display if it's currently hidden
     if(helpMessage.classList.contains("hidden")){
         helpMessage.classList.remove("hidden");
-    // Hide the help message if it's currently displayed
+    // Hide if it's currently displayed
     }else{
         helpMessage.classList.add("hidden");
     }
