@@ -15,7 +15,8 @@ class="selected"
 
 {% block content %}
 <main id="vote-main">
-        <h1>{{ question.question_text }}</h1>
+        <h1>Select Your Choice</h1>
+        <h2>{{ question.question_text }}</h2>
         <form action="{% url 'polls:vote' question.code %}" method="post">
             {% csrf_token %}
             <!-- Select choice form -->

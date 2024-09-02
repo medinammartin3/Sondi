@@ -8,3 +8,7 @@ with a unique email field.
 """
 class CustomUser(AbstractUser):
     email = models.EmailField('email address', unique=True)
+
+    # Display the username when this model is referenced as a foreign key
+    def __str__(self):
+        return self.username

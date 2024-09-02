@@ -1,0 +1,19 @@
+<!-- POLL RESULTS FOR THE OWNER -->
+
+{% extends "polls/results.html" %}
+
+{% block voteSelected %}
+class=""
+{% endblock %}
+
+{% block myPollsSelected %}
+class="selected"
+{% endblock %}
+
+{% block resultsTitle %}
+<h1>Results of Your Poll</h1>
+{% endblock %}
+
+{% block closeButton %}
+<a href="{% url 'polls:user_polls' %}" class="button">Close</a>
+{% endblock %}

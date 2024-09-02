@@ -43,11 +43,11 @@ class="selected"
             {% if most_recent %}
                 <ul>
                 {% for question in most_recent %}
-                    <li><a href="/polls/vote/{{ question.code }}/">{{ question.question_text }}</a></li>
+                    <li><a href="{% url 'polls:vote' question.code %}">{{ question.question_text }}</a></li>
                 {% endfor %}
                 </ul>
             {% else %}
-                <p>No polls are available.</p>
+                <p class="display-error-message">No polls are available.</p>
             {% endif %}
         </div>
         <!-- Most voted -->
@@ -55,7 +55,7 @@ class="selected"
             {% if most_voted %}
                 <ul>
                 {% for question in most_voted %}
-                    <li><a href="/polls/vote/{{ question.code }}/">{{ question.question_text }}</a></li>
+                    <li><a href="{% url 'polls:vote' question.code %}">{{ question.question_text }}</a></li>
                 {% endfor %}
                 </ul>
             {% else %}
@@ -67,7 +67,7 @@ class="selected"
             {% if trending %}
                 <ul>
                 {% for question in trending %}
-                    <li><a href="/polls/vote/{{ question.code }}/">{{ question.question_text }}</a></li>
+                    <li><a href="{% url 'polls:vote' question.code %}">{{ question.question_text }}</a></li>
                 {% endfor %}
                 </ul>
             {% else %}
@@ -79,7 +79,7 @@ class="selected"
             {% if random %}
                 <ul>
                 {% for question in random %}
-                    <li><a href="/polls/vote/{{ question.code }}/">{{ question.question_text }}</a></li>
+                    <li><a href="{% url 'polls:vote' question.code %}">{{ question.question_text }}</a></li>
                 {% endfor %}
                 </ul>
             {% else %}

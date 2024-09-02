@@ -39,26 +39,22 @@ class IndexView(generic.ListView, generic.FormView):
         most_recent = Question.objects.filter(visibility='public',
                                                 pub_date__lte=timezone.now()
                                                 ).order_by("-pub_date")[:20]
-        
         # Return the 20 all-time most voted questions.
         most_voted = Question.objects.filter(visibility='public',
                                                 pub_date__lte=timezone.now()
                                                 ).annotate(total_votes=Sum('choice__votes')
                                                 ).order_by('-total_votes')[:20]
-        
         # Return the questions published in the last 24 hours.
         questions_last24h = Question.objects.filter(visibility='public',
                                                     pub_date__lte=timezone.now(),
                                                     pub_date__gte=timezone.now() - datetime.timedelta(days=1))
         # Return the 20 most voted questions in the last 24 hours.
         trending = questions_last24h.annotate(total_votes=Sum('choice__votes'),
-                                                ).order_by('-total_votes')[:20]
-        
+                                                ).order_by('-total_votes')[:20] 
         # Return 20 random questions.
         random = Question.objects.filter(visibility='public',
                                             pub_date__lte=timezone.now()
                                             ).order_by('?')[:20]
-        
         return (most_recent, most_voted, trending, random)
     
     # Add to the context the form and the public questions.
@@ -117,7 +113,7 @@ def vote(request, question_code):
 
 
 """
-View for displaying poll results.
+View for displaying poll results after voting.
 """
 class ResultsView(generic.DetailView):
     model = Question
@@ -133,12 +129,23 @@ class ResultsView(generic.DetailView):
 
         # Prepare data points for the results graph.
         datapoints = []
-        for choice in question.choice_set.all():
-            votes_percentage = choice.votes*100/total_votes
-            datapoints.append({"label": choice.choice_text, "y": votes_percentage})
+        if total_votes > 0: # Avoid division by zero
+            for choice in question.choice_set.all():
+                # Calculate the percentage of total votes each choice received
+                votes_percentage = choice.votes*100/total_votes
+                datapoints.append({"label": choice.choice_text, "y": votes_percentage})
         context['datapoints'] = json.dumps(datapoints) # Convert datapoints into a JSON string
 
         return context
+    
+
+
+"""
+Extends ResultsView for displaying poll results to the owner.
+"""
+class OwnerResultsView(ResultsView):
+    def get_template_names(self):
+        return ['polls/owner_results.html']
 
 
 
@@ -151,7 +158,12 @@ class CreatePollView(LoginRequiredMixin, generic.CreateView):
     def get(self, request, *args, **kargs):
         question_form = QuestionForm()
         choice_formset = ChoiceFormSet(queryset=Choice.objects.none())
-        return render(request, "polls/create.html", {"question_form": question_form, "choice_formset": choice_formset})
+        return render(request, "polls/create.html", 
+                      {
+                          "question_form": question_form,
+                          "choice_formset": choice_formset
+                      }
+                    )
 
     def post(self, request, *args, **kargs):
         question_form = QuestionForm(data=self.request.POST)
@@ -159,9 +171,10 @@ class CreatePollView(LoginRequiredMixin, generic.CreateView):
         # Check if question and choice forms are valid
         if question_form.is_valid() and choice_formset.is_valid():
             question = question_form.save(commit=False)
-            # Set publication date and generate code before saving the question.
+            # Set publication date, code and owner before saving the question
             question.pub_date = timezone.now()
-            question.code = CUID_GENERATOR.generate()
+            question.code = CUID_GENERATOR.generate() # Generate code
+            question.owner = request.user
             question.save()
             question_id = question.id
             choices = choice_formset.save(commit=False)
@@ -171,7 +184,12 @@ class CreatePollView(LoginRequiredMixin, generic.CreateView):
                 choice.save()
             return HttpResponseRedirect(reverse('polls:confirmation', args=[question.id]))
         else:
-            return render(request, "polls/create.html", {"question_form": question_form, "choice_formset": choice_formset})
+            return render(request, "polls/create.html", 
+                          {
+                              "question_form": question_form, 
+                              "choice_formset": choice_formset
+                          }
+                        )
 
 
 
@@ -182,3 +200,26 @@ class ConfirmationView(generic.DetailView):
     model = Question
     template_name = "polls/confirmation.html"
     context_object_name = 'question'
+
+
+
+"""
+View to display a list of all polls created by the currently logged-in user.
+"""
+class UserPollsView(LoginRequiredMixin, generic.ListView):
+    model = Question
+    template_name = "polls/user_polls.html"
+
+    def get_queryset(self):
+        # Return the questions created by the user
+        user_questions = Question.objects.filter(owner=self.request.user,
+                                                pub_date__lte=timezone.now()
+                                                ).order_by("-pub_date")
+        return user_questions
+    
+    # Add to the context the questions created by the user
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user_questions = self.get_queryset() # Get the queryset
+        context['user_questions'] = user_questions
+        return context

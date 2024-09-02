@@ -137,11 +137,11 @@ nav > ul a:hover{
 }
 
 #user-section:hover{
-    background-color: #c5c5c527;
+    background-color: #cacaca27;
     
     #username{
         text-decoration: underline;
-        text-underline-offset: 2px;
+        text-underline-offset: 3px;
     }
 }
 
@@ -151,11 +151,11 @@ nav > ul a:hover{
 
 #user-info:hover{
     cursor: pointer;
-    background-color: #c5c5c527;
+    background-color: #cacaca27;
 
     #username{
         text-decoration: underline;
-        text-underline-offset: 2px;
+        text-underline-offset: 3px;
     }
 }
 
@@ -171,13 +171,26 @@ nav > ul a:hover{
 }
 
 #user-menu{
-    position: relative;
-    left: 0;
-    border: solid #9e9e9eb8 2px;
+    background-color: #fffffffc;
+    border: solid #e8e8e81d 2px;
+    height: fit-content;
+    box-shadow: 0 10px 10px #5e5e5e40;
     border-top: none;
     padding: 0 20px;
     border-radius:  0 0 10px 10px;
-    /* TODO: Add transition */
+    animation: userMenuAnimation .5s;
+}
+
+@keyframes userMenuAnimation {
+    from {
+        margin-top: -20%;
+        opacity: 0;
+    }
+
+    to {
+        margin-top: 0%;
+        opacity: 1;
+    }
 }
 
 #user-menu a{
@@ -186,9 +199,14 @@ nav > ul a:hover{
     border-bottom: solid #adadada5 2px;
 }
 
+#user-menu form{
+    margin: 0;
+}
+
 #user-menu button{
     width: 100%;
     margin-top: 25px;
+    margin-bottom: 20px;
     font-size: 21px;
     padding: 8px !important;
 }
@@ -236,6 +254,7 @@ main ul li::marker{
 
 .link, .link:visited{
     color: #1e9baf;
+    text-underline-offset: 2px;
 }
 
 .link:hover{
@@ -288,9 +307,4 @@ footer{
 footer p{
     font-size: 20px;
     padding-top: 5px;
-}
-
-footer a{
-    color: #1e9baf;
-    text-decoration-color: #1e9baf;
 }

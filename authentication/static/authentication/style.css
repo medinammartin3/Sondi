@@ -8,7 +8,7 @@ h2{
     font-size: 38px;
     font-weight: 450;
     color: #4b4f56;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 5px;
@@ -116,10 +116,6 @@ input:placeholder-shown{
 
 
 /* --- SIGNUP.HTML --- */
-
-#signup-main h2{
-    margin-bottom: 30px;
-}
 
 #signup-main input{
     margin-bottom: 18px;

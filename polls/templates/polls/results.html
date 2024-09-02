@@ -1,4 +1,4 @@
-<!-- POLL RESULTS -->
+<!-- POLL RESULTS AFTER VOTING -->
 
 {% extends "base.html" %}
 
@@ -23,11 +23,13 @@ class="selected"
 
 {% block content %}
 <main id="results-main">
+    {% block resultsTitle %}
     <h1>Your vote has been recorded!</h1>
+    {% endblock %}
     <!-- Type of view form -->
     <div class="list-switch" id="view-type-bar">
         <ul>
-            <li id="classic" onclick="classicSelected()" class="selected"><i class="fa-solid fa-list"></i> Classic</li>
+            <li id="classic" onclick="classicSelected()" class="selected"><i class="fa-solid fa-list"></i>Classic</li>
             <li id="graph" onclick="graphSelected()" class=""><i class="fa-solid fa-chart-pie"></i>Graph</li>
         </ul>
     </div>
@@ -49,9 +51,12 @@ class="selected"
     </div>
     <!-- Graph display -->
     <div class="hidden" id="graphContainer"></div>
+    <p id="graph-error-message" class="hidden display-error-message">We are unable to display a graph for polls with no votes</p>
     <h3>Thank you for voting with Sondi <i class="fa-regular fa-face-smile"></i></h3>
     <!-- Close button -->
+    {% block closeButton %}
     <a href="{% url 'home:index' %}" class="button">Close</a>
+    {% endblock %}
 </main>
 {% endblock %}
 

@@ -19,6 +19,7 @@ class Question(models.Model):
     ]
     visibility = models.CharField(blank=False, default='private', max_length=7, 
                                   choices=VISIBILITY_CHOICES)
+    owner = models.ForeignKey("authentication.CustomUser", on_delete=models.CASCADE)
     
     def __str__(self):
         return self.question_text

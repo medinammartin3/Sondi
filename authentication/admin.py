@@ -11,14 +11,16 @@ Display CustomUser model on the Django admin site.
 """
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
+    readonly_fields = ("id", 'password')
     # Fields to display in the list view
-    list_display = ('username', 'email', 'is_staff', 'is_superuser')
+    list_display = ('id', 'username', 'email', 'is_staff', 'is_superuser')
+    ordering = ['id']
     list_filter = ('is_staff', 'is_superuser', 'is_active')
-    search_fields = ('username', 'email')
+    search_fields = ('id', 'username', 'email')
     # Fields to display in the detail view
     fieldsets = (
-        (None, {'fields': ('username', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name', 'email')}),
+        (None, {'fields': ('id', 'username', 'password')}),
+        ('Personal info', {'fields': ('email',)}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )

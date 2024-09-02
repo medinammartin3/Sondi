@@ -15,14 +15,14 @@ class ChoiceInline(admin.TabularInline):
 
 # Admin interface for questions
 class QuestionAdmin(admin.ModelAdmin):
-    readonly_fields = ("id",)
+    readonly_fields = ("id", "owner", "code")
     fieldsets = [
-        ("Question", {"fields": ["id", "code", "visibility", "question_text"]}),
+        ("Question", {"fields": ["id", "owner", "code", "visibility", "question_text"]}),
         ("Date information", {"fields": ["pub_date"]}),
     ]
     inlines = [ChoiceInline]
-    list_display = ["id", "code", "visibility", "question_text", "pub_date", "was_published_recently"]
+    list_display = ["id", "owner", "code", "visibility", "question_text", "pub_date", "was_published_recently"]
     list_filter = ["pub_date"]
-    search_fields = ["code", "question_text"]
+    search_fields = ["code", "owner", "question_text"]
 
 admin.site.register(Question, QuestionAdmin)

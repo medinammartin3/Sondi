@@ -9,6 +9,7 @@ Form to add email field to built-in Django UserCreation Form.
 """
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label=("Email address"), required=True)
+    # Set max length of a username to 15 characters
     UserModel._meta.get_field('username').validators[1].limit_value = 15
     
 

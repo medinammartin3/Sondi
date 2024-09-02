@@ -1,0 +1,38 @@
+<!-- DISPLAY ALL POLLS CREATED BY THE USER -->
+
+{% extends "base.html" %}
+
+{% block title %}My Polls | Sondi{% endblock %}
+
+{% block css %}
+{% load static %}
+{% static 'polls/style.css' %}
+{% endblock %}
+
+{% block myPollsSelected %}
+class="selected"
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1>Polls you've created</h1>
+    <div id="user-polls-list">
+        <!-- Check if the user has created any polls -->
+        {% if user_questions %}
+            <!-- List of polls -->
+            <ul>
+            {% for question in user_questions %}
+                <li>
+                    <span>{{ question.question_text }}</span>
+                    <a href="{% url 'polls:owner_results' question.id %}" class="link" title="View Results">View Results</a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <!-- Error message -->
+            <p class="display-error-message">No polls are available</p>
+            <a href="{% url 'polls:create' %}" class="link">Create a poll now</a>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}
