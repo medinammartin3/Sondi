@@ -15,7 +15,7 @@ It implements:
 - Testing (*tests*)
 - Default administration Django site
 - Race conditions manage
-- Authentification system (coming)
+- Authentification system
 
 ## How to Install
 
