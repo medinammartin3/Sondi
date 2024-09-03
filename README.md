@@ -15,8 +15,7 @@ It implements:
 - Testing (*tests*)
 - Default administration Django site
 - Race conditions manage
-- Authentification system
-
+- Authentification system and accounts management
 ## How to Install
 
 * Clone or download the project from this GitHub repository.
