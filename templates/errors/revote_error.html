@@ -1,0 +1,16 @@
+<!-- THE USER TRIED TO VOTE ON A QUESTION HE HAS ALREADY VOTED ON -->
+
+{% extends "404.html" %}
+
+{% load static %}
+
+{% block title %}Revote Error | Sondi{% endblock %}
+
+{% block errorImage %}<img src="{% static 'images/revote-error-animate.svg' %}" alt="revote-error-animate">{% endblock %}
+{% block errorTitle %}<h1>You've Already Voted</h1>{% endblock %}
+{% block errorText %}
+    <p>
+        It looks like you've already voted on this poll. 
+        Each user can only vote once to keep things fair.
+    </p>
+{% endblock %}

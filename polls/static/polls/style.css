@@ -143,11 +143,6 @@ input:placeholder-shown{
     margin: 12px 0;
 }
 
-.display-error-message{
-    color: #7e7e7e;
-    font-style: italic;
-}
-
 #public-questions-list a{
     color: #393e46;
 }
@@ -320,20 +315,6 @@ background: #b4b4b4;
 }
 .choice-form input{
     margin-left: 50px;
-}
-
-.choice-form .errorlist{
-    list-style-type: none;
-    font-style: italic;
-    padding: 0;
-    margin-bottom: 10px;
-    flex-basis: 100%;
-}
-
-.choice-form .errorlist li{
-    color: #ff7474;
-    font-size: 20px;
-    text-align: center;
 }
 
 .choice-form i{
@@ -521,16 +502,6 @@ opacity: 0.75;
 }
 
 
-/* Error message */
-
-.error-message{
-    color: #ff7474;
-    font-size: 20px;
-    text-align: center;
-    font-style: italic;
-}
-
-
 /* Select choice form (radio buttons style) */
 
 .rad-label{
@@ -593,8 +564,9 @@ opacity: 0.75;
 /* Submit button */
 
 #vote-button{
-    margin-top: 25px;
-    width: 30%;
+    margin-top: 20px;
+    width: 50%;
+    max-width: 200px;
     min-width: fit-content;
     font-size: 21px;
 }

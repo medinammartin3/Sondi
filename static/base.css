@@ -1,6 +1,8 @@
 /* ------ BASE TEMPLATE CSS ------ */
 
 
+/* ----- GENERAL ----- */
+
 html, body{
     height: 100%;
 }
@@ -138,11 +140,6 @@ nav > ul a:hover{
 
 #user-section:hover{
     background-color: #cacaca27;
-    
-    #username{
-        text-decoration: underline;
-        text-underline-offset: 3px;
-    }
 }
 
 #user-info{
@@ -152,11 +149,11 @@ nav > ul a:hover{
 #user-info:hover{
     cursor: pointer;
     background-color: #cacaca27;
+}
 
-    #username{
-        text-decoration: underline;
-        text-underline-offset: 3px;
-    }
+#user-section:hover #username, #user-info:hover #username{
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 #user-icon{
@@ -294,6 +291,42 @@ main ul li::marker{
 }
 
 
+/* Error messages */
+
+/* Display */
+.display-error-message{
+    color: #7e7e7e;
+    font-style: italic;
+}
+
+/* Forms (error message type text) */
+.form-error-message{
+    color: #ff7474;
+    font-size: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Forms (error message type list) */
+.errorlist{
+    list-style-image: url('images/error-icon.svg');
+    font-style: italic;
+    padding: 0;
+    margin-bottom: 10px;
+    flex-basis: 100%;
+}
+
+.errorlist li{
+    color: #ff7474;
+    font-size: 20px;
+    text-align: center;
+    &::marker{
+        font-style: normal;
+        font-size: 30px;
+    }
+}
+
+
 
 /* --- FOOTER --- */
 
@@ -307,4 +340,18 @@ footer{
 footer p{
     font-size: 20px;
     padding-top: 5px;
+}
+
+
+
+
+/* ----- ERROR PAGES ----- */
+
+#error-page-main img{
+    width: 450px;
+    margin: auto;
+}
+
+#error-page-main h1{
+    margin-top: 0;
 }

@@ -21,7 +21,7 @@ class="selected"
             {% csrf_token %}
             <!-- Select choice form -->
             {% if error_message %}
-                <p class="error-message">{{ error_message }}</p>
+                <p class="form-error-message">{{ error_message }}</p>
             {% endif %}
             {% for choice in question.choice_set.all %}
                 <label class="rad-label" for="choice{{ forloop.counter }}">

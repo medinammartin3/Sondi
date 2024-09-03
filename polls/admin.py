@@ -7,13 +7,17 @@ from django.contrib import admin
 from .models import Choice, Question
 
 
-# Inline form for choices
+"""
+Inline for displaying all choices associated with a question.
+"""
 class ChoiceInline(admin.TabularInline):
     model = Choice
     extra = 0
 
 
-# Admin interface for questions
+"""
+Display Question model on the Django admin site.
+"""
 class QuestionAdmin(admin.ModelAdmin):
     readonly_fields = ("id", "owner", "code")
     fieldsets = [

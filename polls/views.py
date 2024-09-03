@@ -87,35 +87,56 @@ View for handling poll voting.
 @login_required
 def vote(request, question_code):
     question = get_object_or_404(Question, code=question_code)
-    try:
-        selected_choice = question.choice_set.get(pk=request.POST["choice"])
-    except (KeyError, Choice.DoesNotExist):
-        # Display error message only if the form is submitted.
-        if request.method == "POST":
-            return render(
-                request,
-                "polls/vote.html",
-                {
-                    "question": question,
-                    "error_message": "Please select a choice",
-                },
-            )
-        else:
-            return render(request, "polls/vote.html", {"question": question})
+    user = request.user
+
+    # Initialize the voted_questions field on the JSON if it's not already set 
+    if 'voted_questions' not in user.voted_questions:
+        user.voted_questions['voted_questions'] = []
+
+    # Get the current list of voted question codes
+    voted_questions = user.voted_questions['voted_questions']
+
+    # Check if the user has already voted for this question
+    if question_code in voted_questions:
+        # Render error page
+        return render(request, 'errors/revote_error.html', status=403)
+    # The user can vote
     else:
-        # Using F() expression to avoid race condition
-        selected_choice.votes = F('votes') + 1 
-        selected_choice.save()
-        # HttpResponseRedirect after successfully dealing with POST data
-        # to prevent multiple submissions.
-        return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
+        try:
+            selected_choice = question.choice_set.get(pk=request.POST["choice"])
+        except (KeyError, Choice.DoesNotExist):
+            # Display error message only if the form is submitted.
+            if request.method == "POST":
+                return render(
+                    request,
+                    "polls/vote.html",
+                    {
+                        "question": question,
+                        "error_message": "Please select a choice",
+                    },
+                )
+            else:
+                return render(request, "polls/vote.html", {"question": question})
+        else:
+            # Using F() expression to avoid race condition
+            selected_choice.votes = F('votes') + 1 
+            selected_choice.save()
+
+            # Add the question code to the user's voted questions list
+            voted_questions.append(question_code)
+            user.voted_questions['voted_questions'] = voted_questions
+            user.save()  # Save the updated user object
+
+            # HttpResponseRedirect after successfully dealing with POST data
+            # to prevent multiple submissions.
+            return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
     
 
 
 """
 View for displaying poll results after voting.
 """
-class ResultsView(generic.DetailView):
+class ResultsView(LoginRequiredMixin, generic.DetailView):
     model = Question
     template_name = "polls/results.html"
 
@@ -129,12 +150,12 @@ class ResultsView(generic.DetailView):
 
         # Prepare data points for the results graph.
         datapoints = []
-        if total_votes > 0: # Avoid division by zero
+        if total_votes > 0:  # Avoid division by zero
             for choice in question.choice_set.all():
                 # Calculate the percentage of total votes each choice received
                 votes_percentage = choice.votes*100/total_votes
                 datapoints.append({"label": choice.choice_text, "y": votes_percentage})
-        context['datapoints'] = json.dumps(datapoints) # Convert datapoints into a JSON string
+        context['datapoints'] = json.dumps(datapoints)  # Convert datapoints into a JSON string
 
         return context
     
@@ -173,7 +194,7 @@ class CreatePollView(LoginRequiredMixin, generic.CreateView):
             question = question_form.save(commit=False)
             # Set publication date, code and owner before saving the question
             question.pub_date = timezone.now()
-            question.code = CUID_GENERATOR.generate() # Generate code
+            question.code = CUID_GENERATOR.generate()  # Generate code
             question.owner = request.user
             question.save()
             question_id = question.id
@@ -196,7 +217,7 @@ class CreatePollView(LoginRequiredMixin, generic.CreateView):
 """
 View for displaying the confirmation page after creating a poll.
 """
-class ConfirmationView(generic.DetailView):
+class ConfirmationView(LoginRequiredMixin, generic.DetailView):
     model = Question
     template_name = "polls/confirmation.html"
     context_object_name = 'question'

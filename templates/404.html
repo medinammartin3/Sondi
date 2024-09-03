@@ -1,4 +1,4 @@
-<!-- 404 ERROR TEMPLATE -->
+<!-- 404 ERROR -->
 
 {% extends "base.html" %}
 
@@ -10,5 +10,9 @@
 
 {% block content %}
 <!-- TODO: 404 error template -->
-<h1>ERRRROOOORRRR</h1>
+<main id="error-page-main">
+    {% block errorImage %}<img src="" alt="">{% endblock %}
+    {% block errorTitle %}<h1>ERROR 404</h1>{% endblock %}
+    {% block errorText %}<p></p>{% endblock %}
+</main>
 {% endblock %}
