@@ -12,7 +12,6 @@ Implemented with **Django**.
 
 It implements:
 - Simple sqLite Database
-- Testing (*tests*)
 - Default administration Django site
 - Race conditions manage
 - Authentification system and accounts management
