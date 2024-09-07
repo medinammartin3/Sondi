@@ -9,10 +9,14 @@
 {% endblock %}
 
 {% block content %}
-<!-- TODO: 404 error template -->
 <main id="error-page-main">
-    {% block errorImage %}<img src="" alt="">{% endblock %}
-    {% block errorTitle %}<h1>ERROR 404</h1>{% endblock %}
-    {% block errorText %}<p></p>{% endblock %}
+    {% block errorImage %}<img src="{% static 'images/404-error-animate.svg' %}" alt="404-error-animate">{% endblock %}
+    {% block errorTitle %}<h1>Page Not Found</h1>{% endblock %}
+    {% block errorText %}
+    <p>
+        We couldn't find what you searched for. 
+        Try searching again.
+    </p>
+    {% endblock %}
 </main>
 {% endblock %}

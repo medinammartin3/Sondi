@@ -1,0 +1,16 @@
+<!-- THE USER TRIED TO SEARCH A POLL WITH A CODE THAT DOESN'T EXIST -->
+
+{% extends "404.html" %}
+
+{% load static %}
+
+{% block title %}Poll Not Found | Sondi{% endblock %}
+
+{% block errorImage %}<img src="{% static 'images/poll-not-found-animate.svg' %}" alt="poll-not-found-animate">{% endblock %}
+{% block errorTitle %}<h1>Poll Not Found</h1>{% endblock %}
+{% block errorText %}
+    <p>
+        We couldn't find the poll with the provided code. 
+        Please try with a different code.
+    </p>
+{% endblock %}

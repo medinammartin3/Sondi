@@ -86,7 +86,11 @@ View for handling poll voting.
 """
 @login_required
 def vote(request, question_code):
-    question = get_object_or_404(Question, code=question_code)
+    try:
+        question = Question.objects.get(code=question_code)
+    except Question.DoesNotExist:
+        # Render custom 404 (poll not found) template
+        return render(request, 'errors/poll_not_found.html', status=404)
     user = request.user
 
     # Initialize the voted_questions field on the JSON if it's not already set 
@@ -98,7 +102,7 @@ def vote(request, question_code):
 
     # Check if the user has already voted for this question
     if question_code in voted_questions:
-        # Render error page
+        # Render custom 403 (revote error) template
         return render(request, 'errors/revote_error.html', status=403)
     # The user can vote
     else:
