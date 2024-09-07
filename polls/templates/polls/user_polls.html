@@ -24,6 +24,7 @@ class="selected"
             {% for question in user_questions %}
                 <li>
                     <span>{{ question.question_text }}</span>
+                    <span>Code: {{ question.code }}</span>
                     <a href="{% url 'polls:owner_results' question.id %}" class="link" title="View Results">View Results</a>
                 </li>
             {% endfor %}

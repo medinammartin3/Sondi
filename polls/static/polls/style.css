@@ -1,4 +1,4 @@
- /* ------ POLLS APP TEMPLATES CSS ------ */
+/* ------ POLLS APP TEMPLATES CSS ------ */
 
 
 /* --- GENERAL --- */
@@ -666,13 +666,13 @@ opacity: 0.75;
 #user-polls-list li{
     display: flex;
     flex-direction: row;
+    word-break: break-word;
     justify-content: center;
-    padding: 0 4%;
+    padding: 20px 4%;
     margin: 0;
     border-bottom: solid #cecece 2px;
     &:first-of-type{border-top: solid #cecece 2px;}
-    &:nth-child(even){background-color: #afafaf20;}
-    &:hover{background-color: #80808029;}
+    &:nth-child(even){background-color: #c0c0c020;}
 }
 
 #user-polls-list li::before {
@@ -682,19 +682,21 @@ opacity: 0.75;
     left: 0;
     color: #393e46;
     margin-right: 20px;
-    padding: 20px 0;
 }
 
-#user-polls-list span{
-    padding: 20px 0;
+#user-polls-list span:last-of-type{
+    min-width: fit-content;
+    text-align: right;
+    flex-grow: 1;
+    font-weight: 500;
+    color: #5c5c5c;
+    margin: 0px 40px;
 }
 
 #user-polls-list a{
     font-size: 22px;
-    padding: 20px 0;
     min-width: fit-content;
     text-align: right;
-    flex-grow: 1;
     height: 100%;
 }
 
