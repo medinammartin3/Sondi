@@ -11,13 +11,12 @@ class SignUpForm(UserCreationForm):
     email = forms.EmailField(label=("Email address"), required=True)
     # Set max length of a username to 15 characters
     UserModel._meta.get_field('username').validators[1].limit_value = 15
-    
 
     def __init__(self, *args, **kwargs):
         super(UserCreationForm, self).__init__(*args, **kwargs)
         # Remove help text for all fields
-        for fieldname in ['username', 'password1', 'password2']:
-            self.fields[fieldname].help_text = None
+        for field in ['username', 'password1', 'password2']:
+            self.fields[field].help_text = None
 
     class Meta:
         model = UserModel

@@ -1,5 +1,4 @@
 window.onload = function(){
-    removeLabels();
     updateDeleteButtons();
     DisableBackButton();
 }
@@ -33,9 +32,7 @@ function addForm(event) {
 
     totalForms.value = `${formNum + 1}`; // Update the total number of forms in the management form
 
-    console.log(totalForms.value)
     updateDeleteButtons();
-    removeLabels();
 }
 
 
@@ -64,9 +61,7 @@ function deleteForm(event){
         });
     });
 
-    console.log(totalForms.value)
     updateDeleteButtons();
-    removeLabels();
 }
 
 
@@ -96,25 +91,10 @@ function updateDeleteButtons(){
 
 
 
-// Remove all django default form labels, except those related to visibility
-function removeLabels(){
-    let labels = document.querySelectorAll("label");
-    labels.forEach(label => {
-        if(label.getAttribute('for') && label.getAttribute('for').includes('visibility')){
-            return;
-        }
-        label.remove();
-    });
-}
-
-
-
-
 // Disable the back button when the poll is created
 function DisableBackButton(){
     window.history.forward();
 }
-
 
 
 

@@ -660,6 +660,7 @@ opacity: 0.75;
 
 #user-polls-list ul{
     padding: 0;
+    margin-top: 50px;
 }
 
 #user-polls-list li{
@@ -669,7 +670,8 @@ opacity: 0.75;
     padding: 0 4%;
     margin: 0;
     border-bottom: solid #cecece 2px;
-    &:nth-child(even) {background-color: #d7d7d720;}
+    &:first-of-type{border-top: solid #cecece 2px;}
+    &:nth-child(even){background-color: #afafaf20;}
     &:hover{background-color: #80808029;}
 }
 

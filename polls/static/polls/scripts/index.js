@@ -1,14 +1,3 @@
-// Remove all django default form labels
-window.onload = function () {
-    let labels = document.querySelectorAll("label");
-
-    labels.forEach(label => {
-        label.remove()
-    });
-}
-
-
-
 // Public polls list display by category
 
 // List title

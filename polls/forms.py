@@ -26,15 +26,15 @@ class ChoiceForm(forms.ModelForm):
     class Meta:
         model = Choice
         fields = ["choice_text"]
-        labels = {"choice_text": "Choice"}
+        labels = {"choice_text": ""}
 
 # Formset for display and manage multiple choice forms.
 # Requires a minimum of 2 choices to create a new poll.
 ChoiceFormSet = forms.modelformset_factory(
-    Choice, fields=("choice_text",), extra=0, min_num=2, max_num=100,
+    Choice, form=ChoiceForm, extra=0, min_num=2, max_num=100,
     error_messages = {
             'choice_text': {
-                'required': '* Please enter a choice.',
+                'required': '* Please enter a choice',
             },
         },
     widgets = {
@@ -52,7 +52,7 @@ ChoiceFormSet = forms.modelformset_factory(
 Form for searching a poll by its code.
 """
 class CodeForm(forms.Form):
-    question_code = forms.CharField(label=None, max_length=6, required=True, 
+    question_code = forms.CharField(label="", max_length=6, required=True, 
                                     widget=forms.TextInput(attrs={
                                         'placeholder': 'Enter the question code'
                                         }),
