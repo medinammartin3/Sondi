@@ -1,5 +1,5 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect, render
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
@@ -11,10 +11,17 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CodeForm, QuestionForm, ChoiceFormSet
 from .models import Choice, Question
 
+import os
 import datetime
 import json
 from cuid2 import Cuid
+from hashids import Hashids
 
+# Initialize Hashids with the provided salt and minimum length
+hashids = Hashids(salt=os.getenv("HASHID_SALT"), min_length=8)
+# Encode the given value using Hashids
+def hashid_encode(value):
+    return hashids.encode(value)
 
 # Unique code generation with CUID2
 # Max (total) entropy : 1,572,120,576
@@ -133,7 +140,7 @@ def vote(request, question_code):
 
             # HttpResponseRedirect after successfully dealing with POST data
             # to prevent multiple submissions.
-            return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
+            return HttpResponseRedirect(reverse("polls:results", args=[hashids.encode(question.id)]))
     
 
 
@@ -143,6 +150,17 @@ View for displaying poll results after voting.
 class ResultsView(LoginRequiredMixin, generic.DetailView):
     model = Question
     template_name = "polls/results.html"
+
+    def get_object(self):
+        try:
+            encoded_id = self.kwargs.get('encoded_id')
+            # Decode the encoded_id using Hashids
+            id = hashids.decode(encoded_id)[0]
+            # Fetch the student instance by the decoded ID
+            question = Question.objects.get(pk=id)
+            return question
+        except (IndexError, Question.DoesNotExist):
+            raise Http404("Question not found")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -207,7 +225,7 @@ class CreatePollView(LoginRequiredMixin, generic.CreateView):
             for choice in choices:
                 choice.question_id = question_id
                 choice.save()
-            return HttpResponseRedirect(reverse('polls:confirmation', args=[question.id]))
+            return HttpResponseRedirect(reverse('polls:confirmation', args=[hashids.encode(question.id)]))
         else:
             return render(request, "polls/create.html", 
                           {
@@ -226,6 +244,16 @@ class ConfirmationView(LoginRequiredMixin, generic.DetailView):
     template_name = "polls/confirmation.html"
     context_object_name = 'question'
 
+    def get_object(self):
+        try:
+            encoded_id = self.kwargs.get('encoded_id')
+            # Decode the encoded_id using Hashids
+            id = hashids.decode(encoded_id)[0]
+            # Fetch the student instance by the decoded ID
+            question = Question.objects.get(pk=id)
+            return question
+        except (IndexError, Question.DoesNotExist):
+            raise Http404("Question not found")
 
 
 """

@@ -17,6 +17,7 @@ class="selected"
 <main>
     <h1>Polls you've created</h1>
     <div id="user-polls-list">
+        {% load hashid_filters %}
         <!-- Check if the user has created any polls -->
         {% if user_questions %}
             <!-- List of polls -->
@@ -25,7 +26,7 @@ class="selected"
                 <li>
                     <span>{{ question.question_text }}</span>
                     <span>Code: {{ question.code }}</span>
-                    <a href="{% url 'polls:owner_results' question.id %}" class="link" title="View Results">View Results</a>
+                    <a href="{% url 'polls:owner_results' question.id|hashid_encode %}" class="link" title="View Results">View Results</a>
                 </li>
             {% endfor %}
             </ul>
