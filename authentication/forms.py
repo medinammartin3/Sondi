@@ -33,6 +33,9 @@ class LoginForm(authForms.AuthenticationForm):
 
 
 
+
+# --- PASSWORD RESET ---
+
 """
 Update label on the password reset form and add placeholder text to the field.
 """
@@ -41,6 +44,7 @@ class PasswordResetForm(authForms.PasswordResetForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # Add placeholder text
         self.fields['email'].widget.attrs.update({'placeholder':'Enter your email address'})
 
 
@@ -54,3 +58,22 @@ class SetPasswordForm(authForms.SetPasswordForm):
         # Remove help text for all fields
         for field in ['new_password1', 'new_password2']:
             self.fields[field].help_text = None
+
+
+
+
+# --- PASSWORD CHANGE ---
+
+"""
+Remove help text and add placeholder text on the password change form fields.
+"""
+class PasswordChangeForm(authForms.PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Remove help text for all fields
+        for field in ['old_password', 'new_password1', 'new_password2']:
+            self.fields[field].help_text = None
+        # Add placeholder text
+        self.fields['old_password'].widget.attrs.update({'placeholder':'Enter your current password'})
+        self.fields['new_password1'].widget.attrs.update({'placeholder':'Enter your new password'})
+        self.fields['new_password2'].widget.attrs.update({'placeholder':'Repeat your new password'})

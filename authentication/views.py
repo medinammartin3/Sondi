@@ -6,7 +6,7 @@ Most of the views are already provided by Django built-in views.
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import SignUpForm, LoginForm, PasswordResetForm, SetPasswordForm
+from .forms import SignUpForm, LoginForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm
 
 
 """
@@ -28,6 +28,8 @@ class LoginView(auth_views.LoginView):
 
 
 
+# --- PASSWORD RESET ---
+
 """
 View for password reset email form.
 """
@@ -43,3 +45,14 @@ View for password reset confirm form.
 class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
     form_class = SetPasswordForm
     template_name = "registration/password_reset_confirm.html"
+
+
+
+# --- PASSWORD CHANGE ---
+
+"""
+View for password change form.
+"""
+class PasswordChangeView(auth_views.PasswordChangeView):
+    form_class = PasswordChangeForm
+    template_name = "registration/password_change_form.html"

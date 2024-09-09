@@ -183,11 +183,11 @@ input:placeholder-shown{
 
 /* --- PASSWORD_RESET_COMPLETE.HTML --- */
 
-#password-reset-confirmation-message{
+.confirmation-message{
     margin-top: 12%;
 }
 
-#password-reset-confirmation-message p{
+.confirmation-message p{
     margin: auto;
     max-width: 80%;
     font-size: 25px;
