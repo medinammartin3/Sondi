@@ -59,6 +59,11 @@ input:placeholder-shown{
     padding: 30px;
 }
 
+.registration-section a, .registration-section p{
+    font-size: 20px;
+    text-underline-offset: 3px;
+}
+
 .registration-form{
     display: flex;
     flex-direction: column;
@@ -78,7 +83,7 @@ input:placeholder-shown{
     min-width: 110px;
     width: 80%;
     padding: 8px;
-    margin: 30px;
+    margin: 30px 30px 0 30px;
 }
 
 .registration-button:hover{
@@ -107,9 +112,8 @@ input:placeholder-shown{
     margin-left: 15px;
 }
 
-.registration-section a, .registration-section p{
-    font-size: 20px;
-    text-underline-offset: 3px;
+#login-button{
+    margin-bottom: 30px;
 }
 
  
@@ -124,5 +128,67 @@ input:placeholder-shown{
 
 #signup-main button{
     margin-top: 15px;
-    margin-bottom: 0;
+}
+
+
+
+
+/* --- PASSWORD_RESET_FORM.HTML --- */
+
+#reset-password-form-main .registration-section{
+    width: 50%;
+    margin-top: 5%;
+}
+
+#reset-password-form-main .registration-section label{
+    margin-top: 5px;
+}
+
+#reset-password-form-main .registration-section input{
+    margin-bottom: 5px;
+}
+
+#reset-password-form-main .registration-button{
+    width: 40%;
+}
+
+
+
+
+/* --- PASSWORD_RESET_DONE.HTML --- */
+
+#email-sent-message{
+    margin-top: 12%;
+}
+
+#email-sent-message i{
+    margin-right: 10px;
+}
+
+
+
+
+/* --- PASSWORD_RESET_CONFIRM.HTML --- */
+
+.password-reset-link-error{
+    margin: auto;
+    max-width: 80%;
+    font-size: 30px;
+    font-weight: bold;
+    &:first-of-type{margin-top: 15%;}
+}
+
+
+
+
+/* --- PASSWORD_RESET_COMPLETE.HTML --- */
+
+#password-reset-confirmation-message{
+    margin-top: 12%;
+}
+
+#password-reset-confirmation-message p{
+    margin: auto;
+    max-width: 80%;
+    font-size: 25px;
 }
