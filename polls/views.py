@@ -140,7 +140,7 @@ def vote(request, question_code):
 
             # HttpResponseRedirect after successfully dealing with POST data
             # to prevent multiple submissions.
-            return HttpResponseRedirect(reverse("polls:results", args=[hashids.encode(question.id)]))
+            return HttpResponseRedirect(reverse("polls:vote_results", args=[hashids.encode(question.id)]))
     
 
 
@@ -149,7 +149,7 @@ View for displaying poll results after voting.
 """
 class ResultsView(LoginRequiredMixin, generic.DetailView):
     model = Question
-    template_name = "polls/results.html"
+    template_name = "polls/vote_results.html"
 
     def get_object(self):
         try:
@@ -225,7 +225,7 @@ class CreatePollView(LoginRequiredMixin, generic.CreateView):
             for choice in choices:
                 choice.question_id = question_id
                 choice.save()
-            return HttpResponseRedirect(reverse('polls:confirmation', args=[hashids.encode(question.id)]))
+            return HttpResponseRedirect(reverse('polls:create_confirmation', args=[hashids.encode(question.id)]))
         else:
             return render(request, "polls/create.html", 
                           {
@@ -241,7 +241,7 @@ View for displaying the confirmation page after creating a poll.
 """
 class ConfirmationView(LoginRequiredMixin, generic.DetailView):
     model = Question
-    template_name = "polls/confirmation.html"
+    template_name = "polls/create_confirmation.html"
     context_object_name = 'question'
 
     def get_object(self):
