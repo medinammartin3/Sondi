@@ -14,8 +14,16 @@ View for new user sign-up.
 """
 class SignUpView(generic.CreateView):
     form_class = SignUpForm
-    success_url = reverse_lazy("login")
+    success_url = reverse_lazy("signup_confirmation")
     template_name = "registration/signup.html"
+
+
+
+"""
+View for new user sign-up.
+"""
+class SignUpConfirmationView(generic.TemplateView):
+    template_name = "registration/signup_confirmation.html"
 
 
 

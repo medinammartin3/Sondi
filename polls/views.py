@@ -184,7 +184,7 @@ class ResultsView(LoginRequiredMixin, generic.DetailView):
 
 
 """
-Extends ResultsView for displaying poll results to the owner.
+Extends ResultsView for displaying poll results to the owner with a different template.
 """
 class OwnerResultsView(ResultsView):
     def get_template_names(self):

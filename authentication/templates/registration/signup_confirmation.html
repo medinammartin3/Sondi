@@ -1,0 +1,25 @@
+<!-- SIGN UP CONFIRMATION -->
+
+{% extends "base.html" %}
+
+{% block title %}Sign Up | Sondi{% endblock %}
+
+{% block css %}
+{% load static %}
+{% static 'authentication/style.css' %}
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="confirmation-message">
+        <h1>Welcome to Sondi !</h1>
+        <p>
+            Your account has been successfully created, and you're now part of the Sondi community. 
+        </p>
+        <p>
+            Start voting, creating and sharing polls.
+            <a href="{% url 'login' %}" class="link">Log in</a>
+        </p>
+    </div>
+</main>
+{% endblock %}
