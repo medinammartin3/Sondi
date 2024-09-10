@@ -16,12 +16,12 @@ import datetime
 import json
 from cuid2 import Cuid
 from hashids import Hashids
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Initialize Hashids with the provided salt and minimum length
 hashids = Hashids(salt=os.getenv("HASHID_SALT"), min_length=8)
-# Encode the given value using Hashids
-def hashid_encode(value):
-    return hashids.encode(value)
 
 # Unique code generation with CUID2
 # Max (total) entropy : 1,572,120,576
