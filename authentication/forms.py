@@ -65,7 +65,7 @@ class SetPasswordForm(authForms.SetPasswordForm):
 # --- PASSWORD CHANGE ---
 
 """
-Remove help text and add placeholder text on the password change form fields.
+Remove help text on the password change form fields.
 """
 class PasswordChangeForm(authForms.PasswordChangeForm):
     def __init__(self, *args, **kwargs):
@@ -73,7 +73,3 @@ class PasswordChangeForm(authForms.PasswordChangeForm):
         # Remove help text for all fields
         for field in ['old_password', 'new_password1', 'new_password2']:
             self.fields[field].help_text = None
-        # Add placeholder text
-        self.fields['old_password'].widget.attrs.update({'placeholder':'Enter your current password'})
-        self.fields['new_password1'].widget.attrs.update({'placeholder':'Enter your new password'})
-        self.fields['new_password2'].widget.attrs.update({'placeholder':'Repeat your new password'})

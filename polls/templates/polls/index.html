@@ -21,7 +21,7 @@ class="selected"
     <form method="POST" id="search-form">
        <i class="fa-solid fa-magnifying-glass"></i>
         {% csrf_token %}
-        {{ form }}
+        {{ form.question_code }}
         <button type="submit" id="search-button" class="button">Search</button>
     </form>
     <!-- Public polls list -->

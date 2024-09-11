@@ -73,9 +73,18 @@ input:placeholder-shown{
 }
 
 .registration-form label{
-    align-self: flex-start;
+    float: left;
     margin-bottom: 3px;
     margin-left: 15px;
+}
+
+.registration-form input{
+    margin-bottom: 18px;
+    
+}
+
+.registration-form div:last-of-type input{
+    margin-bottom: 0;
 }
 
 .registration-button{
@@ -107,7 +116,7 @@ input:placeholder-shown{
 
 #forgot-password{
     justify-content: left;
-    font-size: 18px;
+    font-size: 19px;
     align-self: flex-start;
     margin-left: 15px;
 }
@@ -122,12 +131,7 @@ input:placeholder-shown{
 /* --- SIGNUP.HTML --- */
 
 #signup-main input{
-    margin-bottom: 18px;
     padding: 7px 15px;
-}
-
-#signup-main button{
-    margin-top: 15px;
 }
 
 
