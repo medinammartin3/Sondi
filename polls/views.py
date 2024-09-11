@@ -100,10 +100,6 @@ def vote(request, question_code):
         return render(request, 'errors/poll_not_found.html', status=404)
     user = request.user
 
-    # Initialize the voted_questions field on the JSON if it's not already set 
-    if 'voted_questions' not in user.voted_questions:
-        user.voted_questions['voted_questions'] = []
-
     # Get the current list of voted question codes
     voted_questions = user.voted_questions['voted_questions']
 
