@@ -39,7 +39,6 @@
                     <i class="fa-solid fa-chevron-down" id="user-menu-arrow"></i>
                 </div>
                 <div id="user-menu" class="hidden">
-                    <!-- TODO: customize change password page -->
                     <a href="{% url 'password_change' %}" class="link">Password Change</a>
                     <form action="{% url 'logout' %}" method="post">
                         {% csrf_token %}

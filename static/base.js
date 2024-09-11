@@ -27,8 +27,11 @@ function hideUserMenu(){
 // Add a click event listener to the document to hide the user's
 // actions menu when the user clicks anywhere outside it
 document.addEventListener('click', function(event) {
-    // Check if the click was outside the user menu and the user's info
-    if (!userMenu.contains(event.target) && !userInfo.contains(event.target)) {
-        hideUserMenu();
+    // Check if a user is logged in
+    if (userInfo != null){
+        // Check if the click was outside the user menu and the user's info
+        if (!userMenu.contains(event.target) && !userInfo.contains(event.target)) {
+            hideUserMenu();
+        }
     }
 });
