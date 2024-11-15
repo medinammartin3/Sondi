@@ -1,7 +1,3 @@
-
-`*`*La version en français suit la version en anglais*`*`  
-`*`*French version follows*`*`
-
 # Sondi
 
 ## Description
@@ -42,53 +38,6 @@ It implements:
 ## Credits
 
 This is a personal project currently in development.
-
-<br><br>
-___
-
-<br>
-
-# Sondi
-
-## Description
-
-Application web de sondages en ligne qui permet de créer des sondages, voter sur des sondages existants, visualiser les résultats des sondages et de partager vos sondages.
-
-Implémenté avec **Django**.
-
-Implémente :
-- Simple base de données sqLite 
-- Tests
-- Site d'administration par défaut de Django
-- Système d'authentification (à venir)
-
-## Comment installer
-
-* Cloner ou télécharger le projet depuis ce dépôt GitHub.
-* **Version Python :** 3.12.0
-* **Version Django :** 4.2.7
-
-## Comment exécuter
-
-1. Ouvrez le terminal.
-2. Localisez le projet téléchargé (*utilisez la commande `cd` pour naviguer dans vos dossiers*).
-3. Écrivez `python manage.py runserver` pour démarrer le serveur.
-	* Selon la configuration de votre ordinateur et de votre système d'exploitation, il se peut que cela ne fonctionne pas. Dans ce cas, tapez `python3 manage.py runserver`.
-4. Vous verrez apparaître le lien de la page web (généralement [http://127.0.0.1:8000/](http://127.0.0.1:8000/)). Insérez ce lien dans le navigateur web de votre choix pour accéder à la page web.
-
-## Données de départ
-
-* **Utilisateur**
-  * <ins>Nom d'utilisateur</ins> : ???
-  * <ins>Mot de passe</ins> : ???
-
-* **Codes de quelques sondages d'exemple**
-	* ???
-	* ???
-
-## Crédits
-
-Ce projet est un projet personnel actuellement en cours de développement.
 
 <br>
 
