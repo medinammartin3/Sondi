@@ -11,6 +11,9 @@ It implements:
 - Default administration Django site
 - Race conditions manage
 - Authentification system and accounts management
+
+<!-- 
+
 ## How to Install
 
 * Clone or download the project from this GitHub repository.
@@ -35,9 +38,11 @@ It implements:
 	* ???
 	* ???
 
+ -->
+
 ## Credits
 
-This is a personal project currently in development.
+This is a personal project currently in development. It is expected to be released by February 2025.
 
 <br>
 
