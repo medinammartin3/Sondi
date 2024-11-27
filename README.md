@@ -42,7 +42,8 @@ It implements:
 
 ## Credits
 
-This is a personal project currently in development. It is expected to be released by February 2025.
+This is a personal project currently in development.  
+It is expected to be released by February 2025.
 
 <br>
 
