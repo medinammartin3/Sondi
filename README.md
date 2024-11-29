@@ -6,7 +6,9 @@
 
 # <img src="https://github.com/medinammartin3/Sondi/blob/main/static/images/sondi-logo.svg" alt="pie-chart-icon" width="350"> <br><br> A Web Application for Online Polls
 
-**Sondi** is a free and user-friendly platform for creating, sharing, and participating in online polls. Built with **Django**, Sondi empowers users to voice their opinions anonymously and make decisions collaboratively.
+**Sondi** is a free and user-friendly platform for creating, sharing, and participating in online polls. Built with **Django**, Sondi empowers users to voice their opinions anonymously and make decisions collaboratively.  
+  
+Demonstration video: [https...](#)
 
 <br>
 
