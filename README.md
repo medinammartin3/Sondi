@@ -1,6 +1,6 @@
 > [!NOTE]
 > This is a personal project currently in development. It is expected to be released by February 2025.  
-> You can see a demonstration video [here](#).
+> You can see a demonstration video [here](https://youtu.be/J35Gkc3gHEE).
 
 <br>
 
@@ -8,7 +8,7 @@
 
 **Sondi** is a free and user-friendly platform for creating, sharing, and participating in online polls. Built with **Django**, Sondi empowers users to voice their opinions anonymously and make decisions collaboratively.  
   
-Demonstration video: [https...](#)
+Demonstration video: [https://youtu.be/J35Gkc3gHEE](https://youtu.be/J35Gkc3gHEE)
 
 <br>
 
